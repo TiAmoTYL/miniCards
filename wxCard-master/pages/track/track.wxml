@@ -1,0 +1,22 @@
+
+<!--pages/track/track.wxml-->
+<import src="../template/template.wxml" />
+<view class=" bg-gray3">
+    <view wx:for="{{proList}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" class='track-prod-list'>
+    <view class="product-item">
+      <view class="cardB-mark">
+        <image src="{{itemName.avatarUrl}}"></image>
+      </view>
+      <view class="cardB-content" data-code='{{itemName.code}}' data-pass='{{itemName.pass}}' catchtap='visitDetail'>
+        <view class="name">{{itemName.title}}</view>
+        <view class="subtitle">{{itemName.price}}</view>
+      </view>
+      <view class="cardB-right" >
+      <!-- <view style="font-size: 10px;">2018-01-01</view> -->
+       <view>浏览次数</view>
+       <view style="text-align: center;">{{itemName.visitNum}}</view>
+      </view>
+    </view>
+
+  </view>
+</view>

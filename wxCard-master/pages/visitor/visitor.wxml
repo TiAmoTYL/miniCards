@@ -1,0 +1,11 @@
+
+<!--pages/visitor/visitor.wxml-->
+<import src="../template/template.wxml" />
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+
+<view class=" bg-gray3">
+  <!--访客开始-->
+  
+  <template is="moods" data="{{cardListData}}" wx:if="{{mood}}" />
+  <template is="cardB" data="{{cardListData}}" wx:else />
+</view>

@@ -1,0 +1,10 @@
+
+<!--pages/visitor/visitor.wxml-->
+<import src="../template/template.wxml" />
+<view class=" bg-gray3">
+  <view wx:if="{{ishint}}" style='text-align:center'>加载中....</view>
+
+  <!--产品开始-->
+  <template is="productList" data="{{productList,canEdit,isShare}}" />
+   <button class="btn-blue2 pro-list-add" lang="zh_CN" wx:if="{{canAdd}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="addProduct" >添加产品</button>
+</view>

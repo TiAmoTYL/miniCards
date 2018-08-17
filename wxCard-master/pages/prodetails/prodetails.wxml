@@ -1,0 +1,115 @@
+<!--pages/carddetails/carddetails.wxml-->
+<import src="../template/template.wxml" />
+<view class="main bg-gray3">
+  <view class="bg-gray3" wx:if="{{hasWxUserInfo}}">
+    <view class="card-attr">
+      <image src='{{firstImg}}' style='width:100%;'  ></image>
+      <view class="card-attritem">
+        <text style='color:red;font-size:18px;'>{{cardDetailsData.price}}</text>
+      </view>
+      <view class="card-attritem">
+        <text style='font-size:20px;' class=' black'> {{cardDetailsData.title}}</text>
+      </view>
+    </view>
+    <view class="card-attr">
+      <view class="product-item">
+        <view class="cardB-mark">
+          <image src="{{cardDetailsData.cardsInfo.avatarUrl}}"></image>
+        </view>
+        <view class="cardB-content" data-code='{{cardDetailsData.cardsInfo.code}}' catchtap='toCardDetail'>
+          <view class="name">{{cardDetailsData.cardsInfo.name}}</view>
+          <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{cardDetailsData.cardsInfo.company}}</view>
+          <view class="subtitle">{{cardDetailsData.cardsInfo.position}}</view>
+        </view>
+        <view class="cardB-right" data-code='{{cardDetailsData.cardsInfo.code}}'  catchtap='toCardDetail'>
+          <text bindtap="phoneCall" class="iconfont icon-iconfontzhizuobiaozhun19 blue2" style='line-height:3'></text>
+        </view>
+
+      </view>
+      <view class="cardB-item" data-code='{{cardDetailsData.cardsInfo.code}}' catchtap='toProList'>
+        <view class="cardB-content blue2" style='text-align:center;'>
+          了解更多产品
+        </view>
+        <view class="cardB-right">
+          <view>
+            <text bindtap="phoneCall" class="iconfont icon-iconfontzhizuobiaozhun19 blue2"></text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="card-attr" >
+      <view class="card-attritem">
+        <view style='display:flex;'>
+          <view class='line'></view>
+          <view class='proDtail black'>产品介绍</view>
+          <view class='line'></view>
+        </view>
+
+        <text wx:if="{{cardDetailsData.detail==''}}" class="gray4"> 暂时没有介绍</text>
+        <text wx:else> {{cardDetailsData.detail}}</text>
+      </view>
+      <view class="card-attritem"  style="padding:{{images.length>0?'0px':'30rpx'}};">
+        <view class="container" wx:if="{{images.length>0}}" style='padding:0px;'>
+         <image wx:for="{{images}}"  wx:key="{{itemName}}"  wx:for-index="index" wx:for-item="itemName" src="{{itemName}}" style='width:100%;'  mode="widthFix"></image>
+          <!-- <view wx:for="{{images}}"  wx:key="{{itemName}}"  wx:for-index="index" wx:for-item="itemName">
+            <image src="{{itemName}}" style='width:100%;'></image>
+          </view> -->
+        </view>
+        <text wx:else class="gray4" > 暂时没有图片</text>
+      </view>
+    </view>
+    <view class="cardB-item" style='height:18px'></view>
+
+
+
+
+
+    <!-- <view class="cardB-item" style='margin:5%;border:1px solid #e0e0e0;' data-code='{{cardDetailsData.code}}' catchtap='getTag' wx:if="{{showTag}}">
+      <view class="card-moren">
+        <text class="green iconfont icon-zixun1"></text>
+      </view>
+      <view class="cardB-content" style='text-align:center;'>
+        {{tagText}}
+      </view>
+      <view class="cardB-right">
+        <view>
+          <text bindtap="phoneCall" data-id="{{item.phone}}" class="iconfont icon-erweima green"></text>
+        </view>
+      </view>
+
+    </view> -->
+
+
+    <view>
+      <view class="gallery" style='position:fixed;bottom:0;width:100%;' >
+        <view class="item-carDetailAction-white " style='width:49%'>
+
+          <button lang="zh_CN" open-type="share" data-code="{{cardDetailsData.code}}" class='shara-action' disabled="{{cardDetailsData.pass!='1'}}">
+            <i class="item-up iconfont icon-zhuanfa"></i>
+            <text class='item-down'>分享</text>
+          </button>
+        </view>
+
+
+        <view class="item-carDetailAction-green" style='width:50%;line-height:50%;'>
+          <view class='text' data-phone="{{cardDetailsData.phone}}" catchtap='phoneCall'>
+            <text class='   iconfont icon-zixun1 ' style='font-size:20px;'></text>
+            <text class=' white' style='font-size:20px;'>咨询</text>
+          </view>
+        </view>
+
+
+      </view>
+    </view>
+
+
+
+
+
+  </view>
+  <view wx:else>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo" style='margin:50% 10%;'>查看详细</button>
+  </view>
+</view>
+ 

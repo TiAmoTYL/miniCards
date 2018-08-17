@@ -1,0 +1,65 @@
+<!--pages/createcard/createcard.wxml-->
+<import src="../template/template.wxml" />
+ <wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view class="bg-gray3" >
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="card-form">
+      <view class="card-formitem"  style='margin-top:0px;'>
+        <view class="card-user">
+          <view class="sign">
+            <image src="{{filters.touxiandizhi(cardData.data.avatarUrl)}}" bindtap="portraitClick"></image>
+          </view>
+          <view class="message">
+            <input placeholder="姓名" class="card-input" placeholder-class="gray3" maxlength="6" name="name" value="{{cardData.data.name}}" bindinput="cardDataName" />
+            <input placeholder="手机号码" class="card-input" placeholder-class="gray3" maxlength="14" type="number" name="phone" value="{{cardData.data.phone}}" bindinput="cardDataMobile" />
+          </view>
+           <view class="sign gray3 scan-created-card" style='margin-right:0px;'  catchtap='scanCard'>
+           <view class='iconfont  icon-saomiao' style='font-size:200%;color:#4E5C7D;'></view>
+           <text style='font-size:80%;color:#4E5C7D;'>扫描名片</text>
+            <text style='font-size:80%;color:#4E5C7D;'>智能录入</text>
+          </view>
+        </view>
+      </view>
+      <view class="card-formitem">公司名称:
+        <input placeholder="公司名称" class="card-input" placeholder-class="gray3" maxlength="20" name="company" value="{{cardData.data.company}}" bindinput="cardDataCompany" />
+        职务名称:
+        <input placeholder="职务名称" class="card-input" placeholder-class="gray3" maxlength="20" name="position" value="{{cardData.data.position}}" bindinput="cardDataPosition" />
+        主营业务:
+        <input placeholder="主营业务" class="card-input" placeholder-class="gray3" maxlength="35" name="mainBusiness" value="{{cardData.data.mainBusiness}}" bindinput="cardDataMainBusiness" />
+        行业:<input placeholder="行业" class="card-input" placeholder-class="gray3" maxlength="20" name="vocation" value="{{cardData.data.vocation}}" bindinput="cardDataVocation" />
+ </view>
+ <view class="card-formitem">
+        邮箱:<input placeholder="邮箱" class="card-input " placeholder-class="gray3" maxlength="100" name="email" value="{{cardData.data.email}}" bindinput="cardDataEmail" />
+        网址:<input placeholder="网址" class="card-input" placeholder-class="gray3" maxlength="100" name="url" value="{{cardData.data.url}}" bindinput="cardDataUrl" />
+        微信:<input placeholder="微信" class="card-input" placeholder-class="gray3" maxlength="50" name="weChatNum" value="{{cardData.data.weChatNum}}" bindinput="cardDataWeChatNum" />
+
+      </view>
+      <view class="card-formitem">
+        <view class="section">
+          公司简介:<textarea bindblur="cardDataCompanyProfile" placeholder-class="gray3" maxlength="200" name="companyProfile" value="{{cardData.data.companyProfile}}" auto-height placeholder="公司简介" style="min-height:30px;padding-top:10px;" />
+        </view>
+      </view>
+      <view class="card-formitem">
+        <view class="card-inputlabel">
+          <text class="label blue2 iconfont icon-location" bindtap="openAddress"></text>
+          <input value="{{cardData.data.address}}" placeholder="点击左边选择地址或手动输入" placeholder-class="gray3" maxlength="40" name="address" class="card-input"  bindblur="cardDataAddress"/>
+        </view>
+      </view>
+      <view class="container">
+       建议添加长方形图片：
+        <template is="ninecell" data="{{images,showUpButton}}" />
+      </view>
+
+     
+      <view class="container container-flex">
+       <button catchtap='deleteCard' class="btn-down btn-blue " disabled='{{loadingSavaOrUp}}' loading='{{loadingSavaOrUp}}'>删除</button>
+        <button formType="submit" class="btn-down btn-blue2" disabled='{{loadingSavaOrUp}}'  loading='{{loadingSavaOrUp}}'>保存</button>
+      </view>
+
+    </view>
+  </form>
+
+</view>
+<!-- <view wx:else>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo">获取头像昵称</button>
+</view> -->

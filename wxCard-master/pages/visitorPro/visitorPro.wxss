@@ -1,0 +1,76 @@
+/* pages/visitor/visitor.wxss */
+@import "../template/template.wxss";
+
+.visit-pro-detail {
+  display: flex;
+  height:8%
+}
+
+.pro {
+  height: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.visit-detail-item {
+  padding: 26rpx 30rpx;
+  background: #fff;
+  display: flex;
+  font-size: 13px;
+  color: #bdbdbd;
+  position: relative;
+  height:12%;
+
+}
+
+.visit-detail-item:last-child {
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.visit-detail-item .visit-detail-mark {
+  flex: 0 0 19%;
+  margin-right: 23rpx;
+}
+
+.visit-detail-item .visit-detail-mark image {
+  width: 100%;
+  height: 100%;
+  border-radius: 25rpx;
+  /* border: 1rpx solid #e0e0e0;  */
+  display: block;
+}
+
+.visit-detail-item .visit-detail-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.visit-detail-item .visit-detail-content .name {
+  font-size: 17px;
+  color: #212121;
+}
+
+.visit-detail-item .visit-detail-right {
+  /* display: flex;  */
+  align-items: center;
+}
+
+.visit-detail-item .visit-detail-right view {
+  height: 50%;
+  text-align: right;
+}
+
+.visit-detail-item .visit-detail-right .iconfont {
+  font-size: 45rpx;
+}
+
+.visit-detail-item .visit-detail-right .btn {
+  background: #72a92c;
+  border: 1rpx solid #72a92c;
+  color: #fff;
+  border-radius: 5rpx;
+  font-size: 13px;
+  padding: 10rpx 20rpx;
+}

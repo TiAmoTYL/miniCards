@@ -1,0 +1,124 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.2",
+	"appid": "wx1ff21432af16488a",
+	"projectname": "wxCard-master",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": 0,
+					"name": "扫码看详细",
+					"pathName": "pages/carddetails/carddetails",
+					"query": "code=ff808081652e81de01652e934dd6000e&share=1",
+					"scene": "1007"
+				},
+				{
+					"id": 1,
+					"name": "编辑产品",
+					"pathName": "pages/createproduct/createproduct",
+					"query": "id=0",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "名片夹",
+					"pathName": "pages/cardcase/cardcase",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": 5,
+					"name": "我的产品",
+					"pathName": "pages/productList/productList",
+					"query": "code=2c948a8a63f3d8600163f438c1ef0006",
+					"scene": "1008"
+				},
+				{
+					"id": 4,
+					"name": "查看产品",
+					"pathName": "pages/prodetails/prodetails",
+					"query": "code=4028813965429967016542aa49a6000e&type=1&isShare=true",
+					"scene": "1008"
+				},
+				{
+					"id": 7,
+					"name": "我",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": 6,
+					"name": "访客",
+					"pathName": "pages/visitor/visitor",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": 8,
+					"name": "访客详情",
+					"pathName": "pages/visitorPro/visitorPro",
+					"query": "code=ofc2G5D-kXhjLZ9KQDaqmiRIFhy8&vCode=ofc2G5D-kXhjLZ9KQDaqmiRIFhy8",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "产品追踪",
+					"pathName": "pages/track/track",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": 9,
+					"name": "产品详情",
+					"pathName": "pages/trackdetail/trackdetail",
+					"query": "code=2c948a8a64319f34016431cb0c970002",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "创建名片",
+					"pathName": "pages/createcard/createcard",
+					"query": "id=0",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/about/about",
+					"query": "",
+					"scene": "1008"
+				}
+			]
+		}
+	}
+}

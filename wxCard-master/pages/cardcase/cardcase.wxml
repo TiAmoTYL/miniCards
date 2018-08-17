@@ -1,0 +1,82 @@
+<!--pages/cardcase/cardcase.wxml-->
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view class="made" wx:if="{{ismovebtn}}" bindtouchstart="hideMade">
+</view>
+
+<view class="cardcase bg-gray3">
+  <!-- <view class="searchgroup">
+    <view class="searchgroup-item" bindtap="selectSortType">
+       <view wx:for="{{labels}}" wx:key="{{item.code}}" wx:for-index="itemsindex" wx:for-item="item">
+        <view wx:if="{{userCardData.data.sortType===itemsindex}}">
+         {{item.name}}
+        </view>
+      </view> 
+    </view>
+    <view class="searchgroup-item" >
+      <text class="iconfont icon-sousuo_sousuo"></text>
+      <input bindconfirm="getSearchData" bindblur='getSearchData' placeholder-class="gray3" placeholder="搜索" focus="true" />
+    </view>
+  </view> -->
+  <view class='search'>
+    <input bindconfirm="getSearchData" bindblur="bindSearchData"  placeholder-class="gray3" placeholder="可搜索名字、企业名称、职位"  confirm-type="search" style='text-indent:15px;' value="{{userCardData.data.key}}"/>
+    <text class='iconfont icon-xiazai5 ' style='font-size:30px;margin-left:10px;margin-right:10px;color:white;width:10%;padding-top:1%;' catchtap='getSearchData' ></text>
+  </view>
+
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{labels}}" wx:key="{{item.code}}"  wx:for-index="idx" wx:for-item="item" class="tab-item {{currentTab==idx?'active':''}}" data-current="{{idx}}" data-code="{{item.code}}" bindtap="swichNav">{{item.name}}</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}"   duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{labels}}" wx:key="*this">
+      <scroll-view scroll-y="true" class="scoll-h">
+        <view class="cardB-item" wx:for="{{cardcasedata}}" wx:key="{{item}}" wx:for-index="itemsindex" wx:for-item="item" bindtouchmove="handleMove" bindtouchstart="handleStart" data-id="{{item.id}}" data-name="{{itemName.name}}">
+          <view class="cardB-mark" catchtap="showImg" data-path="{{item.avatarUrl}}">
+            <image src="{{filters.touxiandizhi(item.avatarUrl)}} "></image>
+          </view>
+          <view class="cardB-content" catchtap="handleSkip" data-id="{{item.code}}">
+            <view class="name text-hidden" style="-webkit-line-clamp:1;">{{item.name}}</view>
+            <view class="subtitle text-hidden" style="-webkit-line-clamp:1;">{{item.company}}</view>
+            <view class="subtitle text-hidden" style="-webkit-line-clamp:1;">{{item.position}}</view>
+          </view>
+          <view class="cardB-right">
+            <view>
+              <text>{{item.collectTime}}</text>
+            </view>
+            <view>
+              <text bindtap="phoneCall" data-id="{{item.phone}}" class="iconfont icon-dianhua blue2"></text>
+            </view>
+          </view>
+
+        </view>
+        <view class="hint" wx:if="{{cardcasedata.length=='0'}}">
+          没有更多了~
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+
+
+  <!-- <view class="cardB-item" wx:for="{{cardcasedata}}" wx:key="{{item}}" wx:for-index="itemsindex" wx:for-item="item" bindtouchmove="handleMove" bindtouchstart="handleStart" data-id="{{item.id}}" data-name="{{itemName.name}}">
+    <view class="cardB-mark" catchtap="showImg" data-path="{{item.avatarUrl}}">
+      <image src="{{item.avatarUrl}}"></image>
+    </view>
+    <view class="cardB-content" catchtap="handleSkip" data-id="{{item.code}}">
+      <view class="name">{{item.name}}</view>
+      <view class="subtitle">{{item.company}}</view>
+      <view class="subtitle">{{item.position}}</view>
+    </view>
+    <view class="cardB-right">
+      <view>
+        <text>{{item.collectTime}}</text>
+      </view>
+      <view>
+        <text bindtap="phoneCall" data-id="{{item.phone}}" class="iconfont icon-dianhua blue2"></text>
+      </view>
+    </view>
+
+  </view> -->
+
+  <view class="hint" wx:if="{{cardcasedata.length=='0'}}">
+    没有更多了~
+  </view>
+</view>

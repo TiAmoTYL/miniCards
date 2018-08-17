@@ -1,0 +1,201 @@
+<!--pages/template/template.wxml-->
+
+<template name="card">
+  <view class="bg-gray3">
+    <navigator url="../carddetails/carddetails?id={{itemName.id}}" d hover-class="none" wx:key="{{itemName}}" wx:for="{{cardData}}" wx:for-index="index" wx:for-item="itemName">
+      <view class="card-item">
+        <view class="card-moren" wx:if="{{itemName.isDefault}}">
+          <text class="green iconfont icon-moren"></text>
+        </view>
+        <view class="card-head">
+          <view class="title">
+            <view class="name">{{itemName.name}}</view>
+
+            <view class="label">{{itemName.title}}</view>
+          </view>
+          <view class="sign">
+            <image src="{{itemName.avatarUrl}}" />
+          </view>
+        </view>
+        <view class="card-content">
+          <view>
+            <view class="phone">
+              <text wx:if="{{itemName.mobileVerify}}" class="iconfont icon-dianhua blue"></text>
+              <text wx:else class="gray3 iconfont icon-dianhua "></text> {{itemName.mobile}}
+            </view>
+            <view class="name ">
+            </view>
+            <view wx:if="{{itemName.companyName!=''}}">
+              <text class="gray3  iconfont icon-yanzheng" wx:if="{{itemName.companyVerify}}"></text>
+              <text class="gray3 iconfont icon-yanzheng" wx:else></text> {{itemName.companyName}}
+            </view>
+            <view class="gray4" wx:else>
+              <text class="gray3 iconfont icon-yanzheng" wx:if="{{itemName.companyVerify}}"></text>
+              <text class=" iconfont icon-yanzheng" wx:else></text>
+              <text wx:if="{{itemName.language==0}}"> 公司保密</text>
+              <text wx:else> company is classified</text>
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+    </navigator>
+  </view>
+</template>
+<template name="cardB">
+  <wxs module="filters" src="../../utils/filters.wxs"></wxs>
+  <view class="bg-gray3">
+    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName[6]}}" wx:for-index="index" wx:for-item="itemName" style='height:80px; margin-top:2%;'>
+      <view class="cardB-mark">
+        <image src="{{filters.touxiandizhi(itemName[2])}}"></image>
+      </view>
+      <navigator url="../visitorPro/visitorPro?code={{itemName[0]}}&vCode={{itemName[1]}}" class="cardB-content">
+        <view class="name text-hidden" style='-webkit-line-clamp:1;'>{{itemName[3]}}</view>
+        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName[6]}}</view>
+        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName[7]}}</view>
+      </navigator>
+      <view class="cardB-right">
+        <view style='height:100%;'>
+          <view>{{filters.splitGetOne(itemName[10])}}</view>
+
+          <view>{{itemName[9]}}</view>
+        </view>
+
+      </view>
+
+    </view>
+    <view>
+    </view>
+  </view>
+</template>
+
+<template name="moods">
+  <wxs module="filters" src="../../utils/filters.wxs"></wxs>
+  <view class="bg-gray3">
+    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" style='height:80px; margin-top:2%;'>
+      <view class="cardB-mark">
+        <image src="{{filters.touxiandizhi(itemName.wxAvatarUrl)}}"></image>
+      </view>
+      <view class="cardB-content">
+        <view class="name text-hidden" style='-webkit-line-clamp:1;'>{{itemName.userName}}</view>
+        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName.wxCountry}}</view>
+        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName.wxProvince}}</view>
+      </view>
+    </view>
+    <view>
+    </view>
+  </view>
+</template>
+
+<template name="ninecell">
+  <view class="gallery">
+
+    <view class="item" wx:for="{{images}}" wx:key="">
+      <image src=" {{item.src}}" bindtap="previewImage" data-path='{{item.src}}' />
+      <!-- 删除按钮 -->
+      <view class="delete" bindtap="deleteImage" data-index="{{index}}" data-ind="{{item.index}}" wx:if="{{showUpButton}}">
+        <image style='left:25px;' src="/images/icon_delete.png" />
+      </view>
+    </view>
+    <view class="item" wx:if="{{showUpButton}}">
+      <image src="/images/icon_add.png" class="button-upload" bindtap="chooseImage" />
+    </view>
+  </view>
+</template>
+
+<template name="productList">
+
+  <view wx:for="{{productList}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" class="   {{isShare?'prod-isShare':'prod'}}">
+    <view class="product-item">
+      <view class="cardB-mark">
+        <image src="{{itemName.avatarUrl}}"></image>
+      </view>
+      <view class="cardB-content" data-code='{{itemName.code}}' data-pass='{{itemName.pass}}' catchtap='toDetail'>
+        <view class="name">{{itemName.title}}</view>
+        <view class="subtitle">{{itemName.price}}</view>
+      </view>
+      <view class="cardB-mark" wx:if="{{!isShare}}">
+        <image src="{{itemName.checkUrl}}"></image>
+      </view>
+    </view>
+    <view class='btn-wrap' wx:if="{{canEdit}}">
+
+      <view class='btn-action btn-action-left  iconfont icon-shanchu' data-code="{{itemName.code}}" catchtap='delePro'>删除</view>
+
+      <view class='btn-action btn-action-right  iconfont icon-tubiao09' data-code="{{itemName.code}}" catchtap="editPro"> 编辑</view>
+
+    </view>
+  </view>
+
+
+</template>
+
+<template name="cardItem">
+  <wxs module="filters" src="../../utils/filters.wxs"></wxs>
+  <swiper indicator-dots="{{true}}">
+    <block wx:for="{{cardListData}}" wx:key="{{cardDetailsData.code}}" wx:for-index="index" wx:for-item="cardDetailsData">
+      <swiper-item class='bg-white'>
+        <view class="card-item">
+          <view class="card-head" style='height:50%;'>
+            <view class="sign">
+              <image src="{{filters.touxiandizhi(cardDetailsData.avatarUrl)}}" />
+            </view>
+            <view class="title">
+              <view class='editCard' style='height:40%;'>
+                <view class="name  text-hidden" style='-webkit-line-clamp:1;' data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail">{{cardDetailsData.name}}</view>
+                <view class='iconfont icon-bianji editIcon ' data-index="{{index}}" data-code="{{cardDetailsData.code}}" catchtouchstart='toEdit'></view>
+              </view>
+              <view class="label" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail" style='height:30%;display:flex;align-items:center;'>{{cardDetailsData.position}} <text wx:if="{{cardDetailsData.position!=''&& cardDetailsData.vocation!=''&&cardDetailsData.vocation!=''}}" style='margin-left:2%;margin-right:2%;'>|</text> {{cardDetailsData.vocation}}</view>
+              <view class="label text-hidden" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail" style='-webkit-line-clamp:1;height:30%;'>{{cardDetailsData.company}}</view>
+            </view>
+
+          </view>
+          <view class="card-content" >
+            <view>
+              <view class="phone" catchtap="phoneCall" data-phone="{{cardDetailsData.phone}}">
+                <text class=" gray-icon iconfont icon-dianhua " style='margin-left:3px;'></text> {{cardDetailsData.phone}}
+              </view>
+              <view class="name text-hidden" style='-webkit-line-clamp:1;'>
+                <view wx:if="{{cardDetailsData.address!=''}}">
+                  <text class="gray-icon iconfont icon-location " style='font-size:20px;'></text>
+                  <text style='font-size:14px;' >  {{cardDetailsData.address}}</text>
+                </view>
+                <view class="gray-icon" wx:else>
+                  <text class=" iconfont icon-location" style='font-size:20px;'></text>
+                  <text style='color:#acb2bf;'>暂未填写地址</text>
+                </view>
+              </view>
+              <view class="name text-hidden" style='height:38px;display:flex;margin-top:5px;'>
+                <text class=" gray-icon iconfont icon-fuwu-active" style='font-size:15px;margin-right:7px;margin-left:2px;padding-top:1%;'></text>
+                <text wx:if="{{cardDetailsData.mainBusiness!=''}}">{{cardDetailsData.mainBusiness}}</text>
+                <text wx:else style='color:#acb2bf;'>暂未填写主营业务</text>
+              </view>
+            </view>
+            <view class="icon-code" bindtap="getCode" data-id="{{cardDetailsData.code}}" style='line-height:10px;'>
+              <text class="iconfont icon-erweima"></text>
+              <text style='font-size:10px;'>\n名片码</text>
+            </view>
+          </view>
+        </view>
+        <view class="card-show">
+          <view class='card-show-item' catchtap='showMoods' data-id="{{cardDetailsData.code}}">
+            <text class="iconfont icon-icon-- " style='color:#ffb229'></text> 人气{{cardDetailsData.moods}}
+          </view>
+          <view class='card-show-item'>
+            <text class="iconfont icon-shoucang1 " style='color:red;font-size:12px;margin-right:2px;'></text> 收藏{{cardDetailsData.collect}}
+          </view>
+          <view class='card-show-item'>
+            <text class="iconfont icon-dianzan1" style='color:#3494D1'></text> 点赞{{cardDetailsData.reliable}}
+          </view>
+        </view>
+        <view class="slide-item a">
+          <button class="btn-green-LRM" lang="zh_CN" open-type="share" data-index="{{index}}" data-code="{{cardDetailsData.code}}">发送本张名片</button>
+          <button class="btn-blue-pro-mane" lang="zh_CN" catchtap="addProduct" data-index="{{index}}" data-code="{{cardDetailsData.code}}">产品/服务管理</button>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+</template>

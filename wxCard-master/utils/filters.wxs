@@ -1,0 +1,27 @@
+
+var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  },
+  splitGetOne:function(val){
+    if (val != '' && val!=undefined&& val!=null){
+      return val.split("T")[0];
+    }else{
+      return val;
+    }
+  },
+  touxiandizhi:function(val){
+    if (val == undefined || val == '' || val==null){
+      return "https://www.x-cloudcard.com/V1/bg/show?path=" + encodeURI("morentouxian.jpg");
+    }else{
+      return val;
+    }
+  }
+ 
+
+}
+module.exports = {
+  toFix: filters.toFix,
+  splitGetOne: filters.splitGetOne,
+  touxiandizhi: filters.touxiandizhi,
+}

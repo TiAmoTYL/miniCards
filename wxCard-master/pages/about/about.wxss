@@ -1,0 +1,32 @@
+/* pages/about/about.wxss */
+
+.card-about {
+height:100%;
+  background: #fafafa;
+  padding: 0 63rpx;
+}
+
+.card-about .head {
+  display: flex;
+  /* padding: 100rpx 0; */
+  padding-top:10%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-about .head image {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.card-about .head .title {
+  font-size: 36rpx;
+  color: #212121;
+  padding: 25rpx 0;
+}
+
+.card-about .content{
+    line-height: 50rpx;
+}

@@ -1,0 +1,48 @@
+<!--pages/visitor/visitor.wxml-->
+<import src="../template/template.wxml" />
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view style='background:white;height:100%;'>
+  <!--访客开始-->
+  <view class="visit-detail-item">
+    <view class="visit-detail-mark" catchtap="showImg" data-path="{{item.avatarUrl}}">
+      <image src="{{item[2]}}"></image>
+    </view>
+    <view class="visit-detail-content" catchtap="handleSkip" data-id="{{item.code}}">
+      <view class="name text-hidden" style='-webkit-line-clamp:1;'>{{item[3]}}</view>
+      <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{item[5]}}</view>
+      <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{item[6]}}</view>
+    </view>
+    <view class="visit-detail-right" >
+      <view>
+        <text>{{filters.splitGetOne(item[11])}}</text>
+      </view>
+      <view>
+        <text bindtap="phoneCall" wx:if="{{item[7]!=''}}" data-id="{{item[7]}}" class="iconfont icon-dianhua blue2"></text>
+      </view>
+    </view>
+
+  </view>
+  <view class="visit-pro-detail" style='  background:#EEEEEE;'>
+    <view class='card-show-item'>
+      浏览过的产品
+    </view>
+    <view class='card-show-item'>
+      次数
+    </view>
+    <view class='card-show-item'>
+      时间
+    </view>
+  </view>
+  <view class="visit-pro-detail pro" wx:for="{{itemList}}"  wx:key="{{item[8]}}" wx:for-index="index" wx:for-item="item" >
+    <view class='card-show-item'>
+      {{item[9]}}
+    </view>
+    <view class='card-show-item'>
+      {{item[10]}}
+    </view>
+    <view class='card-show-item'>
+      {{filters.splitGetOne(item[11])}}
+    </view>
+  </view>
+
+</view>

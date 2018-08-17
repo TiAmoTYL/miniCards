@@ -1,0 +1,24 @@
+<!--pages/visitor/visitor.wxml-->
+<import src="../template/template.wxml" />
+
+
+<view class="card-attr tag-top">
+  <input class='tag-sele' maxlength='10' placeholder='新标签名字，10字以内' name="newLabelName" value="{{newLabelName}}" bindinput="newLabelName" ></input>
+  <button lang="zh_CN" class='btn-blue2 tag-button' catchtap='addLabel'>
+    <text class=' iconfont icon-tianjia '></text>
+    <text style='color:white' >新建</text>
+  </button>
+</view>
+<view class='bg-white tag-cantent'>
+
+  <view class='black' style='padding-top:5%;'>标签选择：</view>
+  <view class=" bg-tag">
+    <view class="{{selectLabel[item.code+'_'+item.name] ? 'active impress_label ':'impress_label' }} " catchtap='selectLabelA' data-code="{{item.code+'_'+item.name}}"  wx:for="{{labelList}}" wx:key="{{item}}">{{item.name}}</view>
+  </view>
+
+
+</view>
+ <view class="container container-flex bg-white">
+       <button catchtap='deleteLabel' class="btn-down btn-blue ">删除</button>
+        <button catchtap="confirmLabel" class="btn-down btn-blue2" >确定</button>
+      </view>

@@ -1,0 +1,252 @@
+<!--pages/carddetails/carddetails.wxml-->
+<import src="../template/template.wxml" />
+ <wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view class="main bg-gray3">
+  <view class="bg-gray3" wx:if="{{hasWxUserInfo}}">
+    <!-- <view class='bg-white'>
+      <view class="card-item">
+        <view class="card-head" style='height:50%;'>
+          <view class="sign">
+            <image src="{{filters.touxiandizhi(cardDetailsData.avatarUrl)}}" />
+          </view>
+          <view class="title">
+            <view class="name  text-hidden" style='-webkit-line-clamp:1;display:-webkit-box;height:45%;'>{{cardDetailsData.name}}</view>
+            <view class="label" style='height:30%;display:flex;align-items:center;'>{{cardDetailsData.position}}<text wx:if="{{cardDetailsData.position!=''&&cardDetailsData.vocation!=''}}" style='margin-left:2%;margin-right:2%;'>|</text> {{cardDetailsData.vocation}}</view>
+            <view class="label text-hidden " style='-webkit-line-clamp:1;height:25%;display:flex;align-items:center;'>{{cardDetailsData.company}}</view>
+          </view>
+
+        </view>
+        <view class="card-content" style='margin-top:2%'> 
+          <view>
+            <view class="phone" bindtap="phoneCall" data-id="{{cardDetailsData.phone}}" >
+              <text class=" gray3 iconfont icon-dianhua " style='margin-left:3px;'></text> {{cardDetailsData.phone}}
+            </view>
+            <view class="name" style='display:flex;align-items:center;'>
+              <view wx:if="{{cardDetailsData.address!=''}}" class=' text-hidden'  style='-webkit-line-clamp:1;align-items:center;'>
+                <text class="gray3 iconfont icon-location " style='font-size:20px;'></text>
+                <text style='font-size:14px;margin-left:7px;'>{{cardDetailsData.address}}</text>
+              </view>
+              <view class="gray4" wx:else>
+                <text class=" iconfont icon-location"></text>
+              </view>
+            </view>
+            <view class="name  text-hidden" style='height:38px;display:flex;margin-top:5px;'>
+              <text class=" gray3  iconfont icon-fuwu-active" style='font-size:15px;margin-right:5px;margin-left:2px;padding-top:1%;'></text>  <text wx:if="{{cardDetailsData.mainBusiness!=''}}" style='margin-left:4px;'>{{cardDetailsData.mainBusiness}}</text>
+                <text wx:else style='color:#acb2bf;'>暂未填写主营业务</text>
+            </view>
+          </view>
+          <view class="icon-code" bindtap="getCode" data-id="{{cardDetailsData.code}}" style='line-height:10px;'>
+            <text class="iconfont icon-erweima"></text>
+             <text style='font-size:10px;'>\n名片码</text>
+          </view>
+        </view>
+
+      </view>
+        <view class="card-show" style='margin-bottom:10%;'>
+          <view class='card-show-item' >
+            <text class="iconfont icon-icon-- " style='color:#ffb229'></text> 人气{{cardDetailsData.moods}}
+          </view>
+          <view class='card-show-item'>
+            <text class="iconfont icon-shoucang1 " style='color:red;font-size:12px;margin-right:2px;'></text> 收藏{{cardDetailsData.collect}}
+          </view>
+          <view class='card-show-item' catchtap='reliable' data-id="{{cardDetailsData.code}}">
+            <text class="iconfont {{!cardDetailsData.cancel ? 'icon-dianzan' : 'icon-dianzan1'}} " style='color:#3494D1'></text> 点赞{{cardDetailsData.reliable}}
+          </view>
+        </view>
+      <view class="card-attr" style='border-top:0'>
+        <view style='padding:30rpx;'>
+          <button class='btn-blue2' catchtap='toProduct' data-code='{{cardDetailsData.code}}'  open-type="getUserInfo"  bindgetuserinfo="getWxUserInfo">
+          <text>了解TA的产品和服务</text>
+          </button>
+          
+         
+        </view>
+      </view>
+    </view> -->
+<swiper indicator-dots="{{false}}" style='height:60%;'>
+    <block >
+      <swiper-item class='bg-white' style="height:no!important;">
+        <view class="card-item" style='height:55%;'>
+          <view class="card-head" style='height:50%;'>
+            <view class="sign">
+              <image src="{{filters.touxiandizhi(cardDetailsData.avatarUrl)}}" />
+            </view>
+            <view class="title">
+              <view class='editCard' style='height:40%;'>
+                <view class="name  text-hidden" style='-webkit-line-clamp:1;display:-webkit-box;' data-index="{{index}}" data-code="{{cardDetailsData.code}}" >{{cardDetailsData.name}}</view>
+                
+              </view>
+              <view class="label" data-index="{{index}}" data-code="{{cardDetailsData.code}}" style='height:30%;display:flex;align-items:center;'>{{cardDetailsData.position}} <text wx:if="{{cardDetailsData.position!=''&& cardDetailsData.vocation!=''&&cardDetailsData.vocation!=''}}" style='margin-left:2%;margin-right:2%;'>|</text> {{cardDetailsData.vocation}}</view>
+              <view class="label text-hidden" data-index="{{index}}" data-code="{{cardDetailsData.code}}" style='-webkit-line-clamp:1;height:30%;'>{{cardDetailsData.company}}</view>
+            </view>
+
+          </view>
+          <view class="card-content" >
+            <view>
+              <view class="phone" catchtap="phoneCall" data-id="{{cardDetailsData.phone}}" >
+                <text class=" gray-icon iconfont icon-dianhua " style='margin-left:3px;'></text> {{cardDetailsData.phone}}
+              </view>
+              <view class="name text-hidden" style='-webkit-line-clamp:1;'>
+                <view wx:if="{{cardDetailsData.address!=''}}">
+                  <text class="gray-icon iconfont icon-location " style='font-size:20px;'></text>
+                  <text style='font-size:14px;' >  {{cardDetailsData.address}}</text>
+                </view>
+                <view class="gray-icon" wx:else>
+                  <text class=" iconfont icon-location" style='font-size:20px;'></text>
+                  <text style='color:#acb2bf;'>暂未填写地址</text>
+                </view>
+              </view>
+              <view class="name text-hidden" style='height:38px;display:flex;margin-top:5px;'>
+                <text class=" gray-icon iconfont icon-fuwu-active" style='font-size:15px;margin-right:7px;margin-left:2px;padding-top:1%;'></text>
+                <text wx:if="{{cardDetailsData.mainBusiness!=''}}">{{cardDetailsData.mainBusiness}}</text>
+                <text wx:else style='color:#acb2bf;'>暂未填写主营业务</text>
+              </view>
+            </view>
+            <view class="icon-code" bindtap="getCode" data-id="{{cardDetailsData.code}}"  style='line-height:10px;'>
+              <text class="iconfont icon-erweima"></text>
+              <text style='font-size:10px;'>\n名片码</text>
+            </view>
+          </view>
+        </view>
+        <view class="card-show" style='margin-bottom:0px;'>
+          <view class='card-show-item' >
+            <text class="iconfont icon-icon-- " style='color:#ffb229'></text> 人气{{cardDetailsData.moods}}
+          </view>
+          <view class='card-show-item'>
+            <text class="iconfont icon-shoucang1 " style='color:red;font-size:12px;margin-right:2px;'></text> 收藏{{cardDetailsData.collect}}
+          </view>
+          <view class='card-show-item'  catchtap='reliable' data-id="{{cardDetailsData.code}}">
+            <text class="iconfont {{!cardDetailsData.cancel ? 'icon-dianzan' : 'icon-dianzan1'}}" style='color:#3494D1'></text> 点赞{{cardDetailsData.reliable}}
+          </view>
+        </view>
+         <view class="card-attr" style='border-top:0'>
+        <view style='padding:30rpx;'>
+          <button class='btn-blue2' catchtap='toProduct' data-code='{{cardDetailsData.code}}'  open-type="getUserInfo"  bindgetuserinfo="getWxUserInfo">
+          <text>了解TA的产品和服务</text>
+          </button>
+          
+         
+        </view>
+      </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+
+
+
+
+
+
+
+    <view class='inter-line' catchtap='cardInfo'>名片信息
+      <i class="iconfont {{showCardInfo?'icon-shangla':''}} "></i>
+    </view>
+    <view class="card-attr" wx:if="{{showCardInfo}}">
+      <view class="card-attritem">
+        <text class="label iconfont icon-weixin" style='color:#5F5F5F;margin-right:10px;'></text>
+        <text wx:if="{{cardDetailsData.weChatNum==''}}" class="gray4">暂时没有微信号</text>
+        <text wx:else> {{cardDetailsData.weChatNum}}</text>
+      </view>
+      <view class="card-attritem">
+        <text class="label iconfont icon-youxiang" style='color:#5F5F5F;margin-right:10px;'></text>
+        <text wx:if="{{cardDetailsData.email==''}}" class="gray4">暂时没有Email</text>
+        <text wx:else> {{cardDetailsData.email}}</text>
+      </view>
+      <view class="card-attritem">
+        <text class="label iconfont icon-ie" style='color:#5F5F5F;margin-right:10px;'></text>
+        <text wx:if="{{cardDetailsData.url==''}}" class="gray4">暂时没有网址</text>
+        <text wx:else class='content'> {{cardDetailsData.url}}</text>
+      </view>
+      <view class="card-attritem">
+        <text class="label iconfont icon-location" style='color:#5F5F5F;font-size:20px;'></text>
+        <text wx:if="{{cardDetailsData.address==''}}" class="gray4">暂时没有地址</text>
+
+        <label wx:else>
+          <text> {{cardDetailsData.address}}</text>
+        </label>
+
+      </view>
+    </view>
+    <view class='inter-line' catchtap='enterInfo'>企业介绍
+      <i class="iconfont {{showEnterInfo?'icon-shangla':''}} "></i>
+    </view>
+    <view class="card-attr" wx:if="{{showEnterInfo}}">
+      <view class="card-attritem">
+        <text wx:if="{{cardDetailsData.companyProfile==''}}" class="gray4"> 暂时没有介绍</text>
+        <text wx:else> {{cardDetailsData.companyProfile}}</text>
+      </view>
+    </view>
+
+    <view class='inter-line' catchtap='imgInfo'>图片展示
+      <i class="iconfont {{showImgInfo?'icon-shangla':''}} "></i>
+    </view>
+    <view class="card-attr" wx:if="{{showImgInfo}}" >
+      <view class="card-attritem" style="padding:{{images.length>0?'0px':'30rpx'}};">
+        <view class="container" wx:if="{{images.length>0}}" style='padding:0px;'>
+         <image  wx:for="{{images}}"  wx:key="{{item}}"  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}'  style='width:100%;' mode="widthFix"/>
+         <!-- <view wx:for="{{images}}"  wx:key="{{itemName}}"  wx:for-index="index" wx:for-item="itemName">
+          </view> -->
+          <!-- <template is="ninecell" data="{{images,showUpButton}}" /> -->
+        </view>
+        <text wx:else class="gray4" > 暂时没有图片</text>
+      </view>
+    </view>
+
+
+
+    <view class="cardB-item" style='margin:5%;border:1px solid #e0e0e0;height:20px;' data-code='{{cardDetailsData.code}}' catchtap='getTag' wx:if="{{showTag}}">
+      <view>
+        <text class=" iconfont icon-Shapecopy blue2" style='font-size:20px;'></text>
+      </view>
+
+      <view class="cardB-content" style='text-align:center;'>
+        {{tagText}}
+      </view>
+      <view class="cardB-right">
+        <view>
+          <text bindtap="phoneCall" data-id="{{item.phone}}" class="iconfont icon-iconfontzhizuobiaozhun19 blue2"></text>
+        </view>
+      </view>
+
+    </view>
+<view wx:if="{{isshare}}" class="cardB-item" style='height:20px'></view>
+
+    <view wx:if="{{isshare}}" style='position:fixed;bottom:0;width:100%;'>
+      <view class="gallery">
+        <view class="item-carDetailAction-white ">
+          <button lang="zh_CN" open-type="share" data-code="{{cardDetailsData.code}}" class='shara-action'>
+            <i class="item-up iconfont icon-zhuanfa"></i>
+            <text class='item-down'>分享名片</text>
+          </button>
+        </view>
+
+
+        <view class="item-carDetailAction-green">
+          <!-- <button class="btn-white  " bindtap="openMycard"> -->
+          <view wx:if="{{canDele}}" class='text' data-code="{{cardDetailsData.code}}" catchtap='undockCard'>删除该名片</view>
+          <view wx:else class='text' data-code="{{cardDetailsData.code}}" data-openid="{{cardDetailsData.openId}}" catchtap='addCardOpen'>收藏该名片</view>
+
+          <!-- </button> -->
+        </view>
+        <view class="item-carDetailAction-blue">
+          <!-- <button class="btn-white   " data-id="{{cardDetailsData.id}}" bindtap="openShare"> -->
+          <view class='text' bindtap="saveToMyPhone" style='font-size:100%;' wx:if="{{showUpSavePhone}}">保存到手机</view>
+          <view class='text' bindtap="toMycard" style='font-size:100%;' wx:else>我的名片</view>
+          <!-- </button> -->
+        </view>
+
+      </view>
+    </view>
+
+    <view wx:else>
+    </view>
+
+
+
+  </view>
+  <view wx:else>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo" style='margin:50% 10%;'>查看详细</button>
+  </view>
+</view>

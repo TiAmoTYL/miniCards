@@ -1,0 +1,7 @@
+/* pages/visitor/visitor.wxss */
+@import "../template/template.wxss";
+
+.pro-list-add {
+  margin: 2%;
+  margin-top: 10%;
+}

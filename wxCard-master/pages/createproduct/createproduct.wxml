@@ -1,0 +1,30 @@
+<!--pages/createcard/createcard.wxml-->
+<import src="../template/template.wxml" />
+<view class="bg-gray3" wx:if="{{hasWxUserInfo}}">
+  <form bindsubmit="formSubmit" >
+    <view class="card-form">
+      <view class="card-formitem">
+        <input placeholder="标题(请填写少于20个字)" class="card-input" placeholder-class="gray3" maxlength="20" name="title" value="{{cardData.data.title}}" bindinput="cardDataTitle" />
+        <input placeholder="产品名称(请填写少于30个字)" class="card-input" placeholder-class="gray3" maxlength="30" name="name" value="{{cardData.data.name}}" bindinput="cardDataName" />
+        <input placeholder="单价(请填写少于10个字)" class="card-input" placeholder-class="gray3" maxlength="10" name="price" value="{{cardData.data.price}}" bindinput="cardDataPrice" />
+        <input placeholder="单位(请填写少于10个字)" class="card-input " placeholder-class="gray3" maxlength="10" name="unit" value="{{cardData.data.unit}}" bindinput="cardDataUnit" />
+      </view>
+      <view class="card-formitem">
+        <view class="section">
+          <textarea bindblur="cardDataDetail" placeholder-class="gray3" maxlength="500" name="detail" value="{{cardData.data.detail}}" auto-height placeholder="产品详情(请填写少于500个字)" style="min-height:100px;padding-top:10px;" />
+        </view>
+      </view>
+      <view class="container">
+       建议添加长方形图片：
+        <template is="ninecell" data="{{images,showUpButton}}" />
+      </view>
+      <view class="container">
+        <button formType="submit" class="btn-blue2 " disabled='{{loadingSavaOrUp}}' loading='{{loadingSavaOrUp}}'>保存</button>
+      </view>
+    </view>
+  </form>
+
+</view>
+<view wx:else>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo">获取头像昵称</button>
+</view>
