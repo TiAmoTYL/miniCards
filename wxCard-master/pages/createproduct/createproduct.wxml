@@ -11,7 +11,7 @@
       </view>
       <view class="card-formitem">
         <view class="section">
-          <textarea bindblur="cardDataDetail" placeholder-class="gray3" maxlength="500" name="detail" value="{{cardData.data.detail}}" auto-height placeholder="产品详情(请填写少于500个字)" style="min-height:100px;padding-top:10px;" />
+          <textarea bindblur="cardDataDetail" placeholder-class="gray3" maxlength="500" name="detail" value="{{cardData.data.detail}}" auto-height placeholder="产品详情(请填写少于500个字)" style="min-height:100rpx;padding-top:10rpx;" />
         </view>
       </view>
       <view class="container">

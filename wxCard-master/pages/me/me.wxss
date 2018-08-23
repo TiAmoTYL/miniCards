@@ -9,7 +9,7 @@
   background: #fff;
   border-top: 0rpx solid #e0e0e0;
   border-bottom: 0.5rpx solid #dedede;
-  font-size: 17px;
+  font-size: 17rpx;
   display: flex;
 
 }
@@ -47,14 +47,14 @@
 
 .item-user .name {
   color: #212121;
-  font-size: 24px;
+  font-size: 24rpx;
 }
 
 .item-user .message .number {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 14rpx;
 }
 
 .item-user .message .btn-verify {
@@ -62,7 +62,7 @@
   color: #72a92c;
   border-radius: 5rpx;
   padding: 6rpx 22rpx;
-  font-size: 13px;
+  font-size: 13rpx;
 }
 .cardB-right {
   /* display: flex;  */

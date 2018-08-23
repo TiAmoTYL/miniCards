@@ -6,7 +6,7 @@
 <swiper class="slide" wx:if="{{cardListData.length==0}}">
   <swiper-item>
     <view class="slide-item a">
-    <view style='display:flex;justify-content:center;align-items:center;height:80%;font-size:22px;'> <text>您还没创建名片</text></view>
+    <view style='display:flex;justify-content:center;align-items:center;height:80%;font-size:22rpx;'> <text>您还没创建名片</text></view>
    
       <button class="slide-btn " open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo" style='background-color:#39BF9E;'>马上创建名片</button>
     </view>

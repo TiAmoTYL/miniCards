@@ -12,7 +12,7 @@
         <view class="subtitle">{{itemName.price}}</view>
       </view>
       <view class="cardB-right" >
-      <!-- <view style="font-size: 10px;">2018-01-01</view> -->
+      <!-- <view style="font-size: 10rpx;">2018-01-01</view> -->
        <view>浏览次数</view>
        <view style="text-align: center;">{{itemName.visitNum}}</view>
       </view>

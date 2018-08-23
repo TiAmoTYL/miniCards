@@ -46,7 +46,7 @@
 <template name="cardB">
   <wxs module="filters" src="../../utils/filters.wxs"></wxs>
   <view class="bg-gray3">
-    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName[6]}}" wx:for-index="index" wx:for-item="itemName" style='height:80px; margin-top:2%;'>
+    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName[6]}}" wx:for-index="index" wx:for-item="itemName" style='height:80rpx; margin-top:2%;'>
       <view class="cardB-mark">
         <image src="{{filters.touxiandizhi(itemName[2])}}"></image>
       </view>
@@ -73,7 +73,7 @@
 <template name="moods">
   <wxs module="filters" src="../../utils/filters.wxs"></wxs>
   <view class="bg-gray3">
-    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" style='height:80px; margin-top:2%;'>
+    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" style='height:80rpx; margin-top:2%;'>
       <view class="cardB-mark">
         <image src="{{filters.touxiandizhi(itemName.wxAvatarUrl)}}"></image>
       </view>
@@ -95,7 +95,7 @@
       <image src=" {{item.src}}" bindtap="previewImage" data-path='{{item.src}}' />
       <!-- 删除按钮 -->
       <view class="delete" bindtap="deleteImage" data-index="{{index}}" data-ind="{{item.index}}" wx:if="{{showUpButton}}">
-        <image style='left:25px;' src="/images/icon_delete.png" />
+        <image style='left:25rpx;' src="/images/icon_delete.png" />
       </view>
     </view>
     <view class="item" wx:if="{{showUpButton}}">
@@ -154,27 +154,27 @@
           <view class="card-content" >
             <view>
               <view class="phone" catchtap="phoneCall" data-phone="{{cardDetailsData.phone}}">
-                <text class=" gray-icon iconfont icon-dianhua " style='margin-left:3px;'></text> {{cardDetailsData.phone}}
+                <text class=" gray-icon iconfont icon-dianhua " style='margin-left:3rpx;'></text> {{cardDetailsData.phone}}
               </view>
               <view class="name text-hidden" style='-webkit-line-clamp:1;'>
                 <view wx:if="{{cardDetailsData.address!=''}}">
-                  <text class="gray-icon iconfont icon-location " style='font-size:20px;'></text>
-                  <text style='font-size:14px;' >  {{cardDetailsData.address}}</text>
+                  <text class="gray-icon iconfont icon-location " style='font-size:40rpx;'></text>
+                  <text style="font-size:40rpx;"  >{{cardDetailsData.address}}</text>
                 </view>
                 <view class="gray-icon" wx:else>
-                  <text class=" iconfont icon-location" style='font-size:20px;'></text>
+                  <text class=" iconfont icon-location" style='font-size:40rpx;'></text>
                   <text style='color:#acb2bf;'>暂未填写地址</text>
                 </view>
               </view>
-              <view class="name text-hidden" style='height:38px;display:flex;margin-top:5px;'>
-                <text class=" gray-icon iconfont icon-fuwu-active" style='font-size:15px;margin-right:7px;margin-left:2px;padding-top:1%;'></text>
-                <text wx:if="{{cardDetailsData.mainBusiness!=''}}">{{cardDetailsData.mainBusiness}}</text>
-                <text wx:else style='color:#acb2bf;'>暂未填写主营业务</text>
+              <view class="name text-hidden mainBusiness">
+                <text class=" gray-icon iconfont icon-fuwu-active mainBusiness-icon" ></text>
+                <text wx:if="{{cardDetailsData.mainBusiness!=''}}" class='mainBusiness-text'>{{cardDetailsData.mainBusiness}}</text>
+                <text wx:else style='color:#acb2bf;' class='mainBusiness-text'>暂未填写主营业务</text>
               </view>
             </view>
             <view class="icon-code" bindtap="getCode" data-id="{{cardDetailsData.code}}" style='line-height:10px;'>
               <text class="iconfont icon-erweima"></text>
-              <text style='font-size:10px;'>\n名片码</text>
+              <text style='font-size:8px;'>\n名片码</text>
             </view>
           </view>
         </view>
@@ -183,7 +183,7 @@
             <text class="iconfont icon-icon-- " style='color:#ffb229'></text> 人气{{cardDetailsData.moods}}
           </view>
           <view class='card-show-item'>
-            <text class="iconfont icon-shoucang1 " style='color:red;font-size:12px;margin-right:2px;'></text> 收藏{{cardDetailsData.collect}}
+            <text class="iconfont icon-shoucang1  shoucan" ></text> 收藏{{cardDetailsData.collect}}
           </view>
           <view class='card-show-item'>
             <text class="iconfont icon-dianzan1" style='color:#3494D1'></text> 点赞{{cardDetailsData.reliable}}

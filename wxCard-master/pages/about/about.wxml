@@ -6,10 +6,10 @@
     <view class="subtitle">V1.1.0</view>
   </view>
   <view class="content" wx:if="{{about}}">
-    <text decode="{{true}}" style='font-size:14px;'>
+    <text decode="{{true}}" style='font-size:14rpx;'>
 &ensp;&ensp;&ensp;&ensp;<text style="font-weight:600;">无招名片</text>是您的商务名片管家，人脉拓展和管理专家，商务人士必备！
     </text>
-    <text decode="{{true}}" style='font-size:14px;'>
+    <text decode="{{true}}" style='font-size:14rpx;'>
 <text style="font-weight:600;">AI名片识别:</text> 
     纸质名片简单一拍，即可快捷保存至手机！
     <text style="font-weight:600;">名片标签化管理:</text> 
@@ -21,10 +21,10 @@
     </text>
   </view>
   <view class="content" wx:else>
-    <text decode="{{true}}" style='font-size:18px;'>
+    <text decode="{{true}}" style='font-size:18rpx;'>
 &ensp;&ensp;&ensp;&ensp;感谢您使用无招名片，请您把您的问题与意见发送到以下邮箱，我们将尽快回复您！
     </text>
-    <text decode="{{true}}" style='font-size:20px;'>
+    <text decode="{{true}}" style='font-size:20rpx;'>
 &ensp;&ensp;&ensp;&ensp;183257877@qq.com
     </text>
   </view>

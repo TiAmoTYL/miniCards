@@ -3,7 +3,7 @@
 @import "iconfont_new/iconfont.wxss";
 
 page {
-  font-size: 14px;
+  font-size: 14rpx;
   color: #757575;
   height: 100%;
   background: #EEEEEE;
@@ -91,7 +91,7 @@ height:100%;
 .btn-blue-pro-mane {
   color: #39BF9E;
   margin: 0 30rpx 0 30rpx;
-  margin-top: 5%;
+  margin-top: 20rpx;
   border:1px solid #39BF9E;
   background: white;
 
@@ -143,7 +143,7 @@ swiper {
 }
 
 .text-samll {
-  font-size: 13px;
+  font-size: 13rpx;
 }
 
 .text-right {

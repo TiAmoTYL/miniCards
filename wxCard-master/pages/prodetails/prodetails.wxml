@@ -5,10 +5,10 @@
     <view class="card-attr">
       <image src='{{firstImg}}' style='width:100%;'  ></image>
       <view class="card-attritem">
-        <text style='color:red;font-size:18px;'>{{cardDetailsData.price}}</text>
+        <text style='color:red;font-size:18rpx;'>{{cardDetailsData.price}}</text>
       </view>
       <view class="card-attritem">
-        <text style='font-size:20px;' class=' black'> {{cardDetailsData.title}}</text>
+        <text style='font-size:20rpx;' class=' black'> {{cardDetailsData.title}}</text>
       </view>
     </view>
     <view class="card-attr">
@@ -49,8 +49,8 @@
         <text wx:if="{{cardDetailsData.detail==''}}" class="gray4"> 暂时没有介绍</text>
         <text wx:else> {{cardDetailsData.detail}}</text>
       </view>
-      <view class="card-attritem"  style="padding:{{images.length>0?'0px':'30rpx'}};">
-        <view class="container" wx:if="{{images.length>0}}" style='padding:0px;'>
+      <view class="card-attritem"  style="padding:{{images.length>0?'0rpx':'30rpx'}};">
+        <view class="container" wx:if="{{images.length>0}}" style='padding:0rpx;'>
          <image wx:for="{{images}}"  wx:key="{{itemName}}"  wx:for-index="index" wx:for-item="itemName" src="{{itemName}}" style='width:100%;'  mode="widthFix"></image>
           <!-- <view wx:for="{{images}}"  wx:key="{{itemName}}"  wx:for-index="index" wx:for-item="itemName">
             <image src="{{itemName}}" style='width:100%;'></image>
@@ -59,13 +59,13 @@
         <text wx:else class="gray4" > 暂时没有图片</text>
       </view>
     </view>
-    <view class="cardB-item" style='height:18px'></view>
+    <view class="cardB-item" style='height:18rpx'></view>
 
 
 
 
 
-    <!-- <view class="cardB-item" style='margin:5%;border:1px solid #e0e0e0;' data-code='{{cardDetailsData.code}}' catchtap='getTag' wx:if="{{showTag}}">
+    <!-- <view class="cardB-item" style='margin:5%;border:1rpx solid #e0e0e0;' data-code='{{cardDetailsData.code}}' catchtap='getTag' wx:if="{{showTag}}">
       <view class="card-moren">
         <text class="green iconfont icon-zixun1"></text>
       </view>
@@ -94,8 +94,8 @@
 
         <view class="item-carDetailAction-green" style='width:50%;line-height:50%;'>
           <view class='text' data-phone="{{cardDetailsData.phone}}" catchtap='phoneCall'>
-            <text class='   iconfont icon-zixun1 ' style='font-size:20px;'></text>
-            <text class=' white' style='font-size:20px;'>咨询</text>
+            <text class='   iconfont icon-zixun1 ' style='font-size:20rpx;'></text>
+            <text class=' white' style='font-size:20rpx;'>咨询</text>
           </view>
         </view>
 

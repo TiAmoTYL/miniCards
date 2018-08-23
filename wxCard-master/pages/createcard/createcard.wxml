@@ -4,7 +4,7 @@
 <view class="bg-gray3" >
   <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="card-form">
-      <view class="card-formitem"  style='margin-top:0px;'>
+      <view class="card-formitem"  style='margin-top:0rpx;'>
         <view class="card-user">
           <view class="sign">
             <image src="{{filters.touxiandizhi(cardData.data.avatarUrl)}}" bindtap="portraitClick"></image>
@@ -13,7 +13,7 @@
             <input placeholder="姓名" class="card-input" placeholder-class="gray3" maxlength="6" name="name" value="{{cardData.data.name}}" bindinput="cardDataName" />
             <input placeholder="手机号码" class="card-input" placeholder-class="gray3" maxlength="14" type="number" name="phone" value="{{cardData.data.phone}}" bindinput="cardDataMobile" />
           </view>
-           <view class="sign gray3 scan-created-card" style='margin-right:0px;'  catchtap='scanCard'>
+           <view class="sign gray3 scan-created-card" style='margin-right:0rpx;'  catchtap='scanCard'>
            <view class='iconfont  icon-saomiao' style='font-size:200%;color:#4E5C7D;'></view>
            <text style='font-size:80%;color:#4E5C7D;'>扫描名片</text>
             <text style='font-size:80%;color:#4E5C7D;'>智能录入</text>
@@ -36,7 +36,7 @@
       </view>
       <view class="card-formitem">
         <view class="section">
-          公司简介:<textarea bindblur="cardDataCompanyProfile" placeholder-class="gray3" maxlength="200" name="companyProfile" value="{{cardData.data.companyProfile}}" auto-height placeholder="公司简介" style="min-height:30px;padding-top:10px;" />
+          公司简介:<textarea bindblur="cardDataCompanyProfile" placeholder-class="gray3" maxlength="200" name="companyProfile" value="{{cardData.data.companyProfile}}" auto-height placeholder="公司简介" style="min-height:30rpx;padding-top:10rpx;" />
         </view>
       </view>
       <view class="card-formitem">

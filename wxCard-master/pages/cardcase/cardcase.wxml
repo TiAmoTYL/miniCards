@@ -18,8 +18,8 @@
     </view>
   </view> -->
   <view class='search'>
-    <input bindconfirm="getSearchData" bindblur="bindSearchData"  placeholder-class="gray3" placeholder="可搜索名字、企业名称、职位"  confirm-type="search" style='text-indent:15px;' value="{{userCardData.data.key}}"/>
-    <text class='iconfont icon-xiazai5 ' style='font-size:30px;margin-left:10px;margin-right:10px;color:white;width:10%;padding-top:1%;' catchtap='getSearchData' ></text>
+    <input bindconfirm="getSearchData" bindblur="bindSearchData"  placeholder-class="gray3" placeholder="可搜索名字、企业名称、职位"  confirm-type="search" style='text-indent:15rpx;' value="{{userCardData.data.key}}"/>
+    <text class='iconfont icon-xiazai5 ' style='font-size:30rpx;margin-left:10rpx;margin-right:10rpx;color:white;width:10%;padding-top:1%;' catchtap='getSearchData' ></text>
   </view>
 
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
