@@ -6,7 +6,7 @@
 .card-input {
   border-bottom: 0.5rpx solid #dedede;
   padding: 23rpx 0;
-  font-size: 14rpx;
+  font-size: 14px;
   width: 100%;
   color:#6f6f6f;
 
@@ -23,11 +23,11 @@
 .card-inputlabel .label {
   margin-right: 5rpx;
   padding: 23rpx 0;
-  font-size: 14rpx;
+  font-size: 14px;
 }
 
 .card-inputlabel .label.icon-location {
-  font-size: 30rpx;
+  font-size: 30px;
 }
 
 .card-formitem {
@@ -86,7 +86,7 @@
   color: #72a92c;
   border-radius: 5rpx;
   padding: 6rpx 22rpx;
-  font-size: 13rpx;
+  font-size: 13px;
 }
 
 /* 图片 */
@@ -119,14 +119,14 @@
 
 .item {
   position: relative;
-  margin: 5rpx;
+  margin: 5px;
 }
 
 /*删除按钮*/
 
 .delete {
   position: absolute;
-  height: 20rpx;
+  height: 20px;
   bottom: 0;
   width: 100%;
   background: #ccc;
@@ -135,13 +135,13 @@
 
 .delete image {
   position: absolute;
-  width: 20rpx;
-  height: 20rpx;
+  width: 20px;
+  height: 20px;
 }
 
 .textarea-container {
   background: white;
-  padding: 10rpx;
+  padding: 10px;
 }
 
 .container-flex {
@@ -156,9 +156,16 @@
 }
 
 .scan-created-card {
-  margin-right: 0rpx;
+  margin-right: 0px;
   display: flex;
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
+}
+
+.check-icon {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	opacity: .6;
 }

@@ -1,6 +1,6 @@
 // pages/carddetails/carddetails.js
 var util = require('../../utils/util.js')
-
+const logger = wx.getLogManager()
 //获取应用实例
 var app = getApp()
 var that;
@@ -36,6 +36,9 @@ Page({
     isviewImage: true,
 
   },
+  copyText: function (e) {
+    app.setCBData(e.currentTarget.dataset.text);
+  },
   //获取用户信息
   getWxUserInfo: function(res) {
     var that = this;
@@ -62,7 +65,7 @@ Page({
                 vWxPhone: res.wxPhone,
                 vWxProvince: res.province
               }
-              if (param.vWxAvatarUrl == undefined) {
+              if (param.vWxAvatarUrl == undefined || param.vWxAvatarUrl=='') {
                 param.vWxAvatarUrl = res.wxAvatarUrl;
                 param.vWxCity = res.wxCity;
                 param.vWxCountry = res.wxCountry;
@@ -99,19 +102,22 @@ Page({
           that.setData({
             hasWxUserInfo: true,
           })
-          that.recordVisit();
+          setTimeout(function () {
+            that.recordVisit();
+          }, 2000)
+
+         
         } else {
           wx.authorize({
             scope: 'scope.userInfo',
             success(res) {
-              that.setData({
-                hasWxUserInfo: true,
-              })
-              //that.getWxUserInfo(res)
               wx.getUserInfo({
                 withCredentials: true,
                 success: function(res) {
                   console.log(res.userInfo)
+                  that.setData({
+                    hasWxUserInfo: true,
+                  })
                   if (res.encryptedData != undefined && res.encryptedData != '') {
                     that.setData({
                       "getInfo.data.sessionKey": wx.getStorageSync("userInfo").sessionKey,
@@ -127,7 +133,7 @@ Page({
                           cardCode: that.data.cardDetailsData.cardsInfo.code,
                           openId: that.data.cardDetailsData.cardsInfo.openId,
                           prodCode: that.data.cardDetailsData.code,
-                          prodName: that.data.cardDetailsData.name,
+                          prodName: that.data.cardDetailsData.title,
                           vOpenId: user.openId,
                           vWxAvatarUrl: user.wxAvatarUrl,
                           vWxCity: user.wxCity,
@@ -164,26 +170,25 @@ Page({
   },
   //发起请求做浏览记录
   recordVisit: function() {
+  
     var user = wx.getStorageSync("userInfo")
     app.getData("/V1/system/user.do?openId=" + user.openId, function(res) {
       user = res.result;
-
-      var param = {
-        cardCode: that.data.cardDetailsData.cardsInfo.code,
-        openId: that.data.cardDetailsData.cardsInfo.openId,
-        prodCode: that.data.cardDetailsData.code,
-        prodName: that.data.cardDetailsData.name,
-        vOpenId: user.openId,
-        vWxAvatarUrl: user.wxAvatarUrl,
-        vWxCity: user.wxCity,
-        vWxCountry: user.wxCountry,
-        vWxGender: user.wxGender,
-        vWxNickName: user.wxNickName,
-        vWxPhone: user.wxPhone,
-        vWxProvince: user.wxProvince
-      }
-      if (param.openId != param.vOpenId) {
-        //非自己的情况下 才做记录
+      if (that.data.cardDetailsData.cardsInfo.openId != user.openId) {
+        var param = {
+          cardCode: that.data.cardDetailsData.cardsInfo.code,
+          openId: that.data.cardDetailsData.cardsInfo.openId,
+          prodCode: that.data.cardDetailsData.code,
+          prodName: that.data.cardDetailsData.title,
+          vOpenId: user.openId,
+          vWxAvatarUrl: user.wxAvatarUrl,
+          vWxCity: user.wxCity,
+          vWxCountry: user.wxCountry,
+          vWxGender: user.wxGender,
+          vWxNickName: user.wxNickName,
+          vWxPhone: user.wxPhone,
+          vWxProvince: user.wxProvince
+        }
         that.setData({
           "vistSave.data": param,
           hasWxUserInfo: true
@@ -216,7 +221,7 @@ Page({
     })
   },
   onShareAppMessage: function() {
-    debugger
+    
     if (this.data.cardDetailsData.pass=='1'){
       return {
         title: that.data.cardDetailsData.title,
@@ -250,7 +255,7 @@ Page({
         fImg = fImg + encodeURI(res.result.avatarUrl);
         that.setData({
           cardDetailsData: res.result,
-          images: util.imgObToList(res.result.pImgList, app.globalData.imageUrl),
+          images: util.imgObToListDeleteCover(res.result.pImgList, app.globalData.imageUrl),
           firstImg: fImg
         });
       });
@@ -264,7 +269,7 @@ Page({
         fImg = fImg + encodeURI(res.result.avatarUrl);
         that.setData({
           cardDetailsData: res.result,
-          images: util.imgObToList(res.result.pImgList, app.globalData.imageUrl),
+          images: util.imgObToListDeleteCover(res.result.pImgList, app.globalData.imageUrl),
           firstImg: fImg
         });
 
@@ -276,12 +281,14 @@ Page({
   },
   onReady: function() {
     // 页面渲染完成
-    if (this.data.isShare) {
-      that.checkWxAuth();
-    }
+   
   },
   onShow: function() {
     // 页面显示
+    
+    if (this.data.isShare) {
+      that.checkWxAuth();
+    }
     if (wx.getStorageSync('confirmLabel') != '') {
       var strs = wx.getStorageSync('confirmLabel');
       that.setData({

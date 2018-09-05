@@ -6,7 +6,7 @@
 /*card 名片卡包*/
 
 .card-item {
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   align-content: space-between;
   padding: 42rpx;
@@ -33,7 +33,7 @@
 .card-show-item {
   text-align: center;
   width: 33.3%;
-  font-size: 30rpx;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,13 +76,13 @@
 }
 
 .editIcon {
-  font-size: 55rpx;
+  font-size: 25px;
   color: #a6acbc;
 }
 
 .card-head .title .name {
   margin-left: 20rpx;
-  font-size: 60rpx;
+  font-size: 30px;
   color: white;
   /* display: block; */
   width: 82%;
@@ -91,7 +91,7 @@
 .card-head .title .label {
   margin-left: 20rpx;
   color: white;
-  font-size: 30rpx;
+  font-size: 14px;
 }
 
 .card-head .sign {
@@ -114,7 +114,7 @@
   flex-basis: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 14rpx;
+  font-size: 14px;
 }
 
 .card-content .name {
@@ -123,7 +123,7 @@
 
 .card-content .phone {
   color: white;
-  font-size: 40rpx;
+  font-size: 12pt;
 }
 
 .card-content .icon-code {
@@ -131,7 +131,7 @@
 }
 
 .card-content .icon-code .iconfont {
-  font-size: 60rpx;
+  font-size: 30px;
   color: #757575;
 }
 
@@ -142,15 +142,13 @@
   border-bottom: 0rpx solid #e0e0e0; */
   border-radius: 5rpx;
   margin-bottom: 24rpx;
-  font-size: 14rpx;
+  font-size: 14px;
 }
 
 .card-attr .card-attritem {
   padding: 30rpx;
   /* border-bottom: 1rpx solid #e0e0e0; */
   border: none;
-  font-size:30rpx;
-
 }
 
 .card-attr .card-attritem .label {
@@ -192,17 +190,19 @@
 }
 
 .cardB-item {
-  height: 15%;
+  height: 160rpx;
   /* border-top: 0rpx solid #e0e0e0; */
   padding: 26rpx 30rpx;
   background: #fff;
   display: flex;
-  font-size: 13rpx;
+  font-size: 13px;
   color: #bdbdbd;
   position: relative;
-  margin-bottom: 10rpx;
+  margin-bottom: 10px;
 }
-
+.cardB-item-child{
+  height:80px; margin-top:2%;
+}
 /* .cardB-item:last-child {
   border-bottom: 1rpx solid #e0e0e0;
 } */
@@ -228,7 +228,7 @@
 }
 
 .cardB-item .cardB-content .name {
-  font-size: 17rpx;
+  font-size: 17px;
   color: #212121;
 }
 
@@ -251,7 +251,7 @@
   border: 1rpx solid #72a92c;
   color: #fff;
   border-radius: 5rpx;
-  font-size: 13rpx;
+  font-size: 13px;
   padding: 10rpx 20rpx;
 }
 
@@ -310,10 +310,10 @@
   padding: 26rpx 30rpx;
   background: #fff;
   display: flex;
-  font-size: 13rpx;
+  font-size: 13px;
   color: #bdbdbd;
   position: relative;
-  height: 80rpx;
+  height: 80px;
 }
 
 /* .product-item:last-child {
@@ -338,10 +338,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width:310rpx;
+
 }
 
 .product-item .cardB-content .name {
-  font-size: 17rpx;
+  font-size: 17px;
   color: #212121;
   overflow: hidden;
   white-space: nowrap;
@@ -368,7 +370,7 @@
   border: 1rpx solid #72a92c;
   color: #fff;
   border-radius: 5rpx;
-  font-size: 13rpx;
+  font-size: 13px;
   padding: 10rpx 20rpx;
 }
 
@@ -376,7 +378,7 @@
   height: 40%;
   display: flex;
   width: 100%;
-  border-top: 1rpx solid;
+  border-top: 1px solid;
   border-color: #eee;
 }
 
@@ -385,39 +387,70 @@
   background: white;
   text-align: center;
   margin-bottom: 2%;
-  border-top: 1rpx;
+  border-top: 1px;
   border-color: #eee;
 }
 
 .btn-action-left {
-  border-right: 1rpx solid;
+  border-right: 1px solid;
   border-color: #eee;
   padding-top: 2%;
 }
 
 .btn-action-right {
-  border-left: 1rpx solid;
+  border-left: 1px solid;
   border-color: #eee;
   padding-top: 2%;
 }
-.mainBusiness{
-  height:100rpx;
-  display:flex;
-  /* margin-top:5rpx; */
-  -webkit-line-clamp:2;
+.height-220{
+  height:220rpx;
 }
-.mainBusiness-icon{
-  font-size:40rpx;
-  margin-right:7rpx;
-  margin-left:2rpx;
-  padding-top:1%;
+.height-90{
+  height:90rpx;
 }
-.mainBusiness-text{
-   font-size:40rpx;
+.height-180{
+  height:180rpx;
+}
+.label-posion{
+ display:flex;align-items:center;
+}
+.label-vocation{
+  margin-left:2%;margin-right:2%;
+}
+.label-company{
+  -webkit-line-clamp:1;line-height:50rpx;
 }
 
-.shoucan{
-  color:red;
-  font-size:24rpx;
-  margin-right:6rpx;
+.fuwu-c{
+  font-size:13px;margin-right:7rpx;margin-left:6rpx;
+}
+
+.-webkit-1{
+  -webkit-line-clamp:1;
+}
+
+.m-l-3{
+  margin-left:3px;
+}
+.fz-20{
+  font-size:20px;
+}
+.fz-14{
+  font-size:14px;
+}
+.fz-12{
+ font-size:12px;
+}
+.mt-9{
+  margin-top:9rpx;
+}
+
+.mr-7{
+  margin-right:7rpx;
+}
+.mr-2{
+  margin-right:2px;
+}
+.ml-6{
+ margin-left:6rpx;
 }

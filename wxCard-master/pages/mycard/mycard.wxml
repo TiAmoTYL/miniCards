@@ -6,8 +6,10 @@
 <swiper class="slide" wx:if="{{cardListData.length==0}}">
   <swiper-item>
     <view class="slide-item a">
-    <view style='display:flex;justify-content:center;align-items:center;height:80%;font-size:22rpx;'> <text>您还没创建名片</text></view>
-   
+      <view class='main-create-menu'>
+        <text>您还没创建名片</text>
+      </view>
+
       <button class="slide-btn " open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo" style='background-color:#39BF9E;'>马上创建名片</button>
     </view>
   </swiper-item>
@@ -15,8 +17,15 @@
 <!--名片列表开始-->
 <view class="main slideCardList" wx:else>
   <template is="cardItem" data="{{cardListData}}" />
-  <view class='myCardOpera' >
-    <button  lang="zh_CN" catchtap="scanCard"><text class='   iconfont icon-saomiao '></text><text class='black'>扫描名片</text></button>
-    <view class='cut-off gray3 '  ></view><button class=" " open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo"  catchtap='toCreated'><text class='   iconfont icon-tianjia2 '></text><text class=' black'>创建名片</text></button>
+  <view class='myCardOpera'>
+    <button lang="zh_CN" catchtap="scanCard">
+      <text class='   iconfont icon-saomiao '></text>
+      <text class='black'>扫描名片</text>
+    </button>
+    <view class='cut-off gray3 '></view>
+    <button class=" " open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getWxUserInfo" catchtap='toCreated'>
+      <text class='   iconfont icon-tianjia2 '></text>
+      <text class=' black'>创建名片</text>
+    </button>
   </view>
 </view>

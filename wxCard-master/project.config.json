@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.2",
+	"libVersion": "2.2.3",
 	"appid": "wx1ff21432af16488a",
-	"projectname": "minicard",
+	"projectname": "wxCard-master",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -45,7 +45,7 @@
 					"id": 1,
 					"name": "编辑产品",
 					"pathName": "pages/createproduct/createproduct",
-					"query": "id=0",
+					"query": "code=ff808081658166a401658316130f000e&type=1",
 					"scene": "1008"
 				},
 				{
@@ -56,17 +56,17 @@
 					"scene": "1008"
 				},
 				{
-					"id": 5,
+					"id": 3,
 					"name": "我的产品",
 					"pathName": "pages/productList/productList",
-					"query": "code=2c948a8a63f3d8600163f438c1ef0006",
+					"query": "code=ff808081650a6a7a01650aae3111000d&type=1",
 					"scene": "1008"
 				},
 				{
 					"id": 4,
 					"name": "查看产品",
 					"pathName": "pages/prodetails/prodetails",
-					"query": "code=4028813965429967016542aa49a6000e&type=1&isShare=true",
+					"query": "code=ff808081658166a401658316130f000e&type=1&isShare=true",
 					"scene": "1008"
 				},
 				{
@@ -80,7 +80,7 @@
 					"id": 6,
 					"name": "访客",
 					"pathName": "pages/visitor/visitor",
-					"query": "",
+					"query": "code=ofc2G5KcudvQhZtPBcBH0kbyuy60",
 					"scene": "1008"
 				},
 				{
@@ -100,7 +100,7 @@
 				{
 					"id": 9,
 					"name": "产品详情",
-					"pathName": "pages/trackdetail/trackdetail",
+					"pathName": "pages/prodetails/prodetails",
 					"query": "code=2c948a8a64319f34016431cb0c970002",
 					"scene": "1008"
 				},
@@ -117,6 +117,19 @@
 					"pathName": "pages/about/about",
 					"query": "",
 					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "可編輯的產品列表",
+					"pathName": "pages/productList/productList",
+					"query": "code=ff808081650a6a7a01650aae3111000d&type=1",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "操作指南",
+					"pathName": "pages/instructions/instructions",
+					"query": ""
 				}
 			]
 		}

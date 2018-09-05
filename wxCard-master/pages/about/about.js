@@ -5,6 +5,9 @@ Page({
     aboutImg: app.globalData.aboutImg,
     about:true,
   },
+  copyText: function (e) {
+    app.setCBData("183257877@qq.com");
+  },
   onLoad:function(options){
 
     if (options.type=='1'){

@@ -1,21 +1,43 @@
 <!--pages/createcard/createcard.wxml-->
 <import src="../template/template.wxml" />
 <view class="bg-gray3" wx:if="{{hasWxUserInfo}}">
-  <form bindsubmit="formSubmit" >
+  <form bindsubmit="formSubmit">
     <view class="card-form">
       <view class="card-formitem">
-        <input placeholder="标题(请填写少于20个字)" class="card-input" placeholder-class="gray3" maxlength="20" name="title" value="{{cardData.data.title}}" bindinput="cardDataTitle" />
-        <input placeholder="产品名称(请填写少于30个字)" class="card-input" placeholder-class="gray3" maxlength="30" name="name" value="{{cardData.data.name}}" bindinput="cardDataName" />
+        <input placeholder="标题(请填写少于10个字)" class="card-input" placeholder-class="gray3" maxlength="10" name="title" value="{{cardData.data.title}}" bindinput="cardDataTitle" />
+        <input placeholder="产品名称(请填写少于10个字)" class="card-input" placeholder-class="gray3" maxlength="10" name="name" value="{{cardData.data.name}}" bindinput="cardDataName" />
         <input placeholder="单价(请填写少于10个字)" class="card-input" placeholder-class="gray3" maxlength="10" name="price" value="{{cardData.data.price}}" bindinput="cardDataPrice" />
         <input placeholder="单位(请填写少于10个字)" class="card-input " placeholder-class="gray3" maxlength="10" name="unit" value="{{cardData.data.unit}}" bindinput="cardDataUnit" />
       </view>
       <view class="card-formitem">
         <view class="section">
-          <textarea bindblur="cardDataDetail" placeholder-class="gray3" maxlength="500" name="detail" value="{{cardData.data.detail}}" auto-height placeholder="产品详情(请填写少于500个字)" style="min-height:100rpx;padding-top:10rpx;" />
+          <textarea bindblur="cardDataDetail" placeholder-class="gray3" maxlength="500" name="detail" value="{{cardData.data.detail}}" auto-height placeholder="产品详情(请填写少于500个字)" style="min-height:100px;padding-top:10px;" />
         </view>
       </view>
       <view class="container">
-       建议添加长方形图片：
+        <text>产品封面图片:</text>
+        <view class="gallery">
+          <view class="" style='width:100%;position: relative;'>
+            <image wx:if="{{!showCoverUpButton && coverImg!=''}}" src="{{coverImg}}" bindtap="previewImage" data-path='{{coverImg}}' style='width:100%' />
+            <!--检查图标-->
+            <view style='	position: absolute;bottom: 0;opacity: .6;' wx:if="{{!showCoverUpButton && coverImg!=''}}" >
+              <image bindtap="previewImage" data-path='{{coverImg}}' src="{{cardData.data.checkIcon}}" />
+            </view>
+            <!-- 删除按钮 -->
+            <view class="delete" bindtap="deleteCoverImage" wx:if="{{!showCoverUpButton && coverImg!=''}}" style='position:static'>
+              <image style='left:300rpx;' src="/images/icon_delete.png" />
+            </view>
+          </view>
+          <view class="item" wx:if="{{showCoverUpButton && coverImg==''}}">
+            <image src="/images/icon_add.png" class="button-upload" bindtap="chooseCover" />
+          </view>
+        </view>
+
+
+      </view>
+
+      <view class="container">
+        <text>产品详情图片:</text>
         <template is="ninecell" data="{{images,showUpButton}}" />
       </view>
       <view class="container">

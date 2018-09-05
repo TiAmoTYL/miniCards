@@ -46,14 +46,14 @@
 <template name="cardB">
   <wxs module="filters" src="../../utils/filters.wxs"></wxs>
   <view class="bg-gray3">
-    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName[6]}}" wx:for-index="index" wx:for-item="itemName" style='height:80rpx; margin-top:2%;'>
+    <view class="cardB-item cardB-item-child" wx:for="{{cardListData}}" wx:key="{{itemName[6]}}" wx:for-index="index" wx:for-item="itemName" >
       <view class="cardB-mark">
         <image src="{{filters.touxiandizhi(itemName[2])}}"></image>
       </view>
       <navigator url="../visitorPro/visitorPro?code={{itemName[0]}}&vCode={{itemName[1]}}" class="cardB-content">
-        <view class="name text-hidden" style='-webkit-line-clamp:1;'>{{itemName[3]}}</view>
-        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName[6]}}</view>
-        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName[7]}}</view>
+        <view class="name text-hidden -webkit-1" >{{itemName[3]}}</view>
+        <view class="subtitle text-hidden -webkit-1" >{{itemName[6]}}</view>
+        <view class="subtitle text-hidden -webkit-1" >{{itemName[7]}}</view>
       </navigator>
       <view class="cardB-right">
         <view style='height:100%;'>
@@ -73,14 +73,14 @@
 <template name="moods">
   <wxs module="filters" src="../../utils/filters.wxs"></wxs>
   <view class="bg-gray3">
-    <view class="cardB-item" wx:for="{{cardListData}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" style='height:80rpx; margin-top:2%;'>
+    <view class="cardB-item cardB-item-child" wx:for="{{cardListData}}" wx:key="{{itemName.code}}" wx:for-index="index" wx:for-item="itemName" >
       <view class="cardB-mark">
         <image src="{{filters.touxiandizhi(itemName.wxAvatarUrl)}}"></image>
       </view>
       <view class="cardB-content">
-        <view class="name text-hidden" style='-webkit-line-clamp:1;'>{{itemName.userName}}</view>
-        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName.wxCountry}}</view>
-        <view class="subtitle text-hidden" style='-webkit-line-clamp:1;'>{{itemName.wxProvince}}</view>
+        <view class="name text-hidden -webkit-1" >{{itemName.userName}}</view>
+        <view class="subtitle text-hidden -webkit-1" >{{itemName.wxCountry}}</view>
+        <view class="subtitle text-hidden -webkit-1">{{itemName.wxProvince}}</view>
       </view>
     </view>
     <view>
@@ -90,12 +90,15 @@
 
 <template name="ninecell">
   <view class="gallery">
-
     <view class="item" wx:for="{{images}}" wx:key="">
       <image src=" {{item.src}}" bindtap="previewImage" data-path='{{item.src}}' />
-      <!-- 删除按钮 -->
-      <view class="delete" bindtap="deleteImage" data-index="{{index}}" data-ind="{{item.index}}" wx:if="{{showUpButton}}">
-        <image style='left:25rpx;' src="/images/icon_delete.png" />
+    <!--检查图标-->
+      <view class="check-icon"  data-index="{{index}}" data-ind="{{item.index}}" >
+        <image style='left:70rpx;'  bindtap="previewImage" data-path='{{item.src}}' src="{{item.checkIcon}}" />
+      </view>
+        <!-- 删除按钮 -->
+      <view class="delete" bindtap="deleteImage" data-index="{{index}}" data-ind="{{item.index}}" >
+        <image style='left:70rpx;' src="/images/icon_delete.png" />
       </view>
     </view>
     <view class="item" wx:if="{{showUpButton}}">
@@ -115,7 +118,7 @@
         <view class="name">{{itemName.title}}</view>
         <view class="subtitle">{{itemName.price}}</view>
       </view>
-      <view class="cardB-mark" wx:if="{{!isShare}}">
+      <view class="cardB-mark" style='margin-right:0px;' wx:if="{{!isShare}}">
         <image src="{{itemName.checkUrl}}"></image>
       </view>
     </view>
@@ -137,44 +140,59 @@
     <block wx:for="{{cardListData}}" wx:key="{{cardDetailsData.code}}" wx:for-index="index" wx:for-item="cardDetailsData">
       <swiper-item class='bg-white'>
         <view class="card-item">
-          <view class="card-head" style='height:50%;'>
+          <view class="card-head height-220">
             <view class="sign">
               <image src="{{filters.touxiandizhi(cardDetailsData.avatarUrl)}}" />
             </view>
             <view class="title">
-              <view class='editCard' style='height:40%;'>
-                <view class="name  text-hidden" style='-webkit-line-clamp:1;' data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail">{{cardDetailsData.name}}</view>
+              <view class='editCard height-90' >
+                <view class="name  text-hidden -webkit-1" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail">{{cardDetailsData.name}}</view>
                 <view class='iconfont icon-bianji editIcon ' data-index="{{index}}" data-code="{{cardDetailsData.code}}" catchtouchstart='toEdit'></view>
               </view>
-              <view class="label" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail" style='height:30%;display:flex;align-items:center;'>{{cardDetailsData.position}} <text wx:if="{{cardDetailsData.position!=''&& cardDetailsData.vocation!=''&&cardDetailsData.vocation!=''}}" style='margin-left:2%;margin-right:2%;'>|</text> {{cardDetailsData.vocation}}</view>
-              <view class="label text-hidden" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail" style='-webkit-line-clamp:1;height:30%;'>{{cardDetailsData.company}}</view>
+              <view class="label" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail label-posion" style='height:50rpx;'>{{cardDetailsData.position}} <text wx:if="{{cardDetailsData.position!=''&& cardDetailsData.vocation!=''&&cardDetailsData.vocation!=''}}"  class='label-vocation'>|</text> {{cardDetailsData.vocation}}</view>
+              <view class="label text-hidden label-company" data-index="{{index}}" data-code="{{cardDetailsData.code}}" bindtap="toDetail">{{cardDetailsData.company}}</view>
             </view>
 
           </view>
-          <view class="card-content" >
+          <view class="card-content height-180" >
             <view>
               <view class="phone" catchtap="phoneCall" data-phone="{{cardDetailsData.phone}}">
-                <text class=" gray-icon iconfont icon-dianhua " style='margin-left:3rpx;'></text> {{cardDetailsData.phone}}
+                <text class=" gray-icon iconfont icon-dianhua m-l-3 "></text>{{cardDetailsData.phone}}
               </view>
-              <view class="name text-hidden" style='-webkit-line-clamp:1;'>
+              <view class="name text-hidden -webkit-1" >
                 <view wx:if="{{cardDetailsData.address!=''}}">
-                  <text class="gray-icon iconfont icon-location " style='font-size:40rpx;'></text>
-                  <text style="font-size:40rpx;"  >{{cardDetailsData.address}}</text>
+                  <text class="gray-icon iconfont icon-location fz-20" ></text>
+                  <text class='fz-14' >{{cardDetailsData.address}}</text>
                 </view>
                 <view class="gray-icon" wx:else>
-                  <text class=" iconfont icon-location" style='font-size:40rpx;'></text>
+                  <text class=" iconfont icon-location fz-20" ></text>
                   <text style='color:#acb2bf;'>暂未填写地址</text>
                 </view>
               </view>
-              <view class="name text-hidden mainBusiness">
-                <text class=" gray-icon iconfont icon-fuwu-active mainBusiness-icon" ></text>
-                <text wx:if="{{cardDetailsData.mainBusiness!=''}}" class='mainBusiness-text'>{{cardDetailsData.mainBusiness}}</text>
-                <text wx:else style='color:#acb2bf;' class='mainBusiness-text'>暂未填写主营业务</text>
+
+              <view class="name text-hidden mt-9 -webkit-1" >
+                <view wx:if="{{cardDetailsData.mainBusiness!=''}}">
+                  <text class="gray-icon iconfont icon-fuwu-active fuwu-c" ></text>
+                  <text class='fz-14' >{{cardDetailsData.mainBusiness}}</text>
+                </view>
+                <view class="gray-icon" wx:else>
+                  <text class=" iconfont icon-fuwu-active fz-14 mr-7 ml-6" ></text>
+                  <text style='color:#acb2bf;'>暂未填写主营业务</text>
+                </view>
               </view>
+
+
+
+              <!-- <view class="name text-hidden" style='height:38px;display:flex;margin-top:5px;-webkit-line-clamp:1;'>
+                <text class=" gray-icon iconfont icon-fuwu-active" style='font-size:15px;margin-right:7px;margin-left:2px;padding-top:1%;'></text>
+                <text wx:if="{{cardDetailsData.mainBusiness!=''}}">{{cardDetailsData.mainBusiness}}</text>
+                <text wx:else style='color:#acb2bf;'>暂未填写主营业务</text>
+              </view> -->
+
             </view>
             <view class="icon-code" bindtap="getCode" data-id="{{cardDetailsData.code}}" style='line-height:10px;'>
               <text class="iconfont icon-erweima"></text>
-              <text style='font-size:8px;'>\n名片码</text>
+              <text style='font-size:10px;'>\n名片码</text>
             </view>
           </view>
         </view>
@@ -183,7 +201,7 @@
             <text class="iconfont icon-icon-- " style='color:#ffb229'></text> 人气{{cardDetailsData.moods}}
           </view>
           <view class='card-show-item'>
-            <text class="iconfont icon-shoucang1  shoucan" ></text> 收藏{{cardDetailsData.collect}}
+            <text class="iconfont icon-shoucang1 fz-12 mr-2" style='color:red;'></text> 收藏{{cardDetailsData.collect}}
           </view>
           <view class='card-show-item'>
             <text class="iconfont icon-dianzan1" style='color:#3494D1'></text> 点赞{{cardDetailsData.reliable}}

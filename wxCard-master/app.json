@@ -15,7 +15,8 @@
     "pages/visitor/visitor",
     "pages/visitorPro/visitorPro",
     "pages/track/track",
-    "pages/trackdetail/trackdetail"
+    "pages/trackdetail/trackdetail",
+    "pages/instructions/instructions"
     
   ],
   "window": {

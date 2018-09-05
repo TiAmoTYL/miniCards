@@ -9,6 +9,8 @@ Page({
     loadingSavaOrUp: false,
     images: [], //下面选择图片
     showUpButton: true,
+    showCoverUpButton: true, //显示上传封面图片
+    coverImg: '', //封面图片
     hasWxUserInfo: false,
     isEdit: false,
     editIndex: 0,
@@ -25,9 +27,6 @@ Page({
         "detail": "",
 
         "pImgList": new Array(),
-
-
-
 
         'language': ''
       }
@@ -63,8 +62,6 @@ Page({
       'cardData.data.unit': e.detail.value
     })
   },
-
-
   cardDataDetail: function(e) {
     this.setData({
       'cardData.data.detail': e.detail.value
@@ -91,6 +88,63 @@ Page({
     })
   },
 
+  //选择f封面 s
+  chooseCover: function() {
+    // 选择图片
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'], // 可以指定i来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var imageN = that.data.images.length
+        var list = res.tempFiles
+        if (list.length > 0) {
+          if (list[0].size >= (1024 * 1024 * 3)) {
+            app.showErrorMsg("图片不能大于3M")
+          } else {
+            that.setData({
+              coverImg: res.tempFilePaths[0],
+              showCoverUpButton: false
+            });
+            var imagesList = new Array();
+            app.uploadFile({}, list[0].path, function(res) {
+              var rest = JSON.parse(res.data);
+              rest.result.isCover = "Y"
+              for (var i = 0; i < that.data.cardData.data.pImgList.length; i++) {
+                if (that.data.cardData.data.pImgList[i].isCover == 'Y') {
+                  that.data.cardData.data.pImgList[i].isDelete = 'Y'
+                }
+              }
+
+              that.data.cardData.data.pImgList.push(rest.result)
+
+
+
+            }, app.globalData.upPImageUrl);
+          }
+
+        }
+
+
+
+      }
+    })
+  },
+  //选择f封面 e
+  //删除封面照片 s
+  deleteCoverImage: function(e) {
+    for (var i = 0; i < that.data.cardData.data.pImgList.length; i++) {
+      if (that.data.cardData.data.pImgList[i].isCover == 'Y') {
+        that.data.cardData.data.pImgList[i].isDelete = 'Y'
+      }
+    }
+    that.setData({
+      coverImg: '',
+      showCoverUpButton: true
+    });
+  },
+  //删除封面照片 e
 
 
 
@@ -117,7 +171,7 @@ Page({
   chooseImage: function() {
     // 选择图片
     wx.chooseImage({
-      count: 6, // 默认9
+      count: 9, // 默认9
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
@@ -131,7 +185,10 @@ Page({
             showT = true;
           } else {
             imageN++;
-            that.data.images.push({ src: list[i].path, index: that.data.cardData.data.pImgList.length });
+            that.data.images.push({
+              src: list[i].path,
+              index: that.data.cardData.data.pImgList.length
+            });
 
             var imagesList = new Array();
             app.uploadFile({}, list[i].path, function(res) {
@@ -140,7 +197,7 @@ Page({
 
             }, app.globalData.upPImageUrl);
           }
-          if (imageN >= app.globalData.cardImgLimNum) {
+          if (imageN >= app.globalData.productImgLimNum) {
             break;
           }
         }
@@ -148,10 +205,10 @@ Page({
           images: that.data.images
         });
         imageN = that.data.images.length
-        if (imageN >= app.globalData.cardImgLimNum && !showT) {
+        if (imageN >= app.globalData.productImgLimNum && !showT) {
           wx.showToast({
             icon: "none",
-            title: '只能上传' + app.globalData.cardImgLimNum + '张图片,且不能大于3M',
+            title: '只能上传' + app.globalData.productImgLimNum + '张图片,且不能大于3M',
             duration: 2000
           })
           that.setData({
@@ -160,7 +217,7 @@ Page({
         } else if (showT) {
           wx.showToast({
             icon: "none",
-            title: '图片不能大于100K',
+            title: '图片不能大于3M',
             duration: 2000
 
           })
@@ -197,7 +254,8 @@ Page({
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
     that = this
-    if (wx.getStorageSync("wxUserInfo") == '' && wx.getStorageSync("userInfo")=='') {
+
+    if (wx.getStorageSync("wxUserInfo") == '' && wx.getStorageSync("userInfo") == '') {
       that.setData({
         'hasWxUserInfo': false,
       })
@@ -218,14 +276,22 @@ Page({
       app.getData(this.data.getData.url + options.code + "&isShare=false", function(res) {
         if (res.status == 200) {
           var showImgButtton = true;
+          var cover = '';
           //控制是否增加照片按钮
-          if (res.result.pImgList.length >= app.globalData.cardImgLimNum) {
+          if (res.result.pImgList.length >= app.globalData.productImgLimNum) {
             showImgButtton = false;
           }
+          if (res.result.avatarUrl.indexOf("moren.png")>0){
+            cover = app.globalData.pimageUrl + encodeURI(res.result.avatarUrl);
+          }else{
+            cover = app.globalData.pimageUrl+encodeURI(res.result.avatarUrl);
+          }
           that.setData({
+            coverImg: cover,
             "cardData.data": res.result,
-            images: util.imgObToListWithIndex(res.result.pImgList, app.globalData.pimageUrl),
-            showUpButton: showImgButtton
+            images: util.imgObToListWithIndexDeleteCover(res.result.pImgList, app.globalData.pimageUrl),
+            showUpButton: showImgButtton,
+            showCoverUpButton: false
           })
         } else {
           app.showErrorMsg(res.msg)
@@ -286,10 +352,8 @@ Page({
         }
 
       },
-      fail: function(res) {
-      },
-      complete: function(res) {
-      }
+      fail: function(res) {},
+      complete: function(res) {}
     })
   },
   //提交表单
@@ -341,7 +405,7 @@ Page({
                 duration: 2000
               })
             }
-          },null,function(){
+          }, null, function() {
             that.setData({
               'loadingSavaOrUp': false
             })

@@ -31,7 +31,7 @@ App({
         console.log(res);
       },
       complete: function(res) {
-       
+
       }
     })
   },
@@ -53,7 +53,7 @@ App({
               } else {
                 wx.setStorageSync('userInfo', body.data)
               }
-             
+
               if (body.data.wxNickName != '') {}
               that.globalData.hasLogin = true;
             },
@@ -87,14 +87,14 @@ App({
       // image: './images/error.png',
       duration: 2000,
       title: msg,
-      mask:true
+      mask: true
     })
   },
-  showLoading:function (message) {
-    if (message == undefined || message == null || message==''){
+  showLoading: function(message) {
+    if (message == undefined || message == null || message == '') {
       message = "加载中...";
     }
-    if(wx.showLoading) {
+    if (wx.showLoading) {
       // 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理
       wx.showLoading({
         title: message,
@@ -110,39 +110,41 @@ App({
       });
     }
   },
-  hideLoading:function () {
-    if(wx.hideLoading) {
+  hideLoading: function() {
+    if (wx.hideLoading) {
       // 基础库 1.1.0 微信6.5.6版本开始支持，低版本需做兼容处理
       wx.hideLoading();
     } else {
       wx.hideToast();
     }
   },
-
+  log: function() {
+    return wx.getLogManager();
+  },
 
 
   getWxUserInfo: function(res, callback) {
- 
+
     wx.setStorageSync('wxUserInfo', res.detail.userInfo)
     var user = wx.getStorageSync('userInfo');
 
-  
-      var data = {
-        'iv': res.detail.iv, //wx.getUserInfo接口返回那里的iv
-        'rawData': res.detail.rawData, //wx.getUserInfo接口返回那里的iv
-        'signature': res.detail.signature, // wx.getUserInfo接口返回那里的signature
-        'encryptedData': res.detail.encryptedData, //wx.getUserInfo接口返回那里的encryptedData
-        'sessionKey': user.sessionKey //wx.login接口下面 “code 换取 session_key” 获得
-      }
-      this.getLoginData(data, callback, res)
-    
+
+    var data = {
+      'iv': res.detail.iv, //wx.getUserInfo接口返回那里的iv
+      'rawData': res.detail.rawData, //wx.getUserInfo接口返回那里的iv
+      'signature': res.detail.signature, // wx.getUserInfo接口返回那里的signature
+      'encryptedData': res.detail.encryptedData, //wx.getUserInfo接口返回那里的encryptedData
+      'sessionKey': user.sessionKey //wx.login接口下面 “code 换取 session_key” 获得
+    }
+    this.getLoginData(data, callback, res)
+
   },
   getLoginData: function(data, callback, resAuth) {
     console.log("getLoginData")
-    var param='';
-    if (data.encryptedData != undefined && data.encryptedData!=null){
+    var param = '';
+    if (data.encryptedData != undefined && data.encryptedData != null) {
       param = data;
-    }else{
+    } else {
       param = data.detail;
       param['sessionKey'] = wx.getStorageSync('userInfo').sessionKey;
     }
@@ -151,8 +153,7 @@ App({
     var url = this.globalData.myURL + "/v1/wechat/user/info"
     wx.checkSession({
       success: function(res) {
-        debugger
-        if (res.errMsg =='checkSession:ok'){
+        if (res.errMsg == 'checkSession:ok') {
           //session_key未过期
           wx.request({
             url: url,
@@ -161,7 +162,7 @@ App({
             header: {
               "Content-Type": "application/x-www-form-urlencoded"
             },
-            success: function (res) {
+            success: function(res) {
               if (res.statusCode == 200) {
                 wx.setStorageSync('userInfo', res.data)
                 if (typeof callback == 'function') {
@@ -179,14 +180,14 @@ App({
               }
               //callback(res.data)
             },
-            fail: function (res) {
+            fail: function(res) {
               console.log('请求出错')
               console.log(res)
 
             }
           })
         }
-       
+
       },
       fail: (resp => {
         console.log("checkSession ff")
@@ -240,12 +241,12 @@ App({
         console.log('请求出错')
         console.log(res.data)
       },
-      complete:function(){
+      complete: function() {
         that.hideLoading();
       }
     })
   },
-  postData: function (data, callback, failBack, completeBack) {
+  postData: function(data, callback, failBack, completeBack) {
     this.showLoading();
     var url = this.globalData.myURL + data.url
 
@@ -271,7 +272,7 @@ App({
         }
 
       },
-      complete: function () {
+      complete: function() {
         that.hideLoading();
         if (typeof completeBack == 'function') {
           completeBack()
@@ -279,16 +280,45 @@ App({
       }
     })
   },
+  setCBData: function(text) {　　　　
+    wx.setClipboardData({　　　　　　
+      data: text,
+      success: function(res) {　　　　　　　　
+        wx.getClipboardData({　　　　　　　　　　
+          success: function(res) {　　　　　　　　　　　　
+            wx.showToast({　　　　　　　　　　　　　　
+              title: '复制成功'　　　　　　　　　　　　
+            })　　　　　　　　　　
+          }　　　　　　　　
+        })　　　　　　
+      }　　　　
+    })　　
+  },
   globalData: {
     testNum: '',
     hasLogin: false,
+    //正式版
     myURL: "https://www.x-cloudcard.com",
-  // myURL: "http://127.0.0.1:8089",
-   imageUrl: "https://www.x-cloudcard.com/V1/card/picture/show?path=",
-   // imageUrl: "http://127.0.0.1:8089/V1/card/picture/show?path=",
-    upPImageUrl: "/V1/product/upload/picture",
+    imageUrl: "https://www.x-cloudcard.com/V1/card/picture/show?path=",
     pimageUrl: "https://www.x-cloudcard.com/V1/product/picture/show?path=",
-   // pimageUrl: "http://127.0.0.1:8089/V1/product/picture/show?path=",
+
+//体验版
+  //  myURL: "https://www.x-cloudcard.com/devapi",
+  //  imageUrl: "https://www.x-cloudcard.com/devapi/V1/card/picture/show?path=",
+  //   pimageUrl: "https://www.x-cloudcard.com/devapi/V1/product/picture/show?path=",
+   
+   //本地版
+    // myURL: "http://127.0.0.1:8090",
+    // imageUrl: "http://127.0.0.1:8089/V1/card/picture/show?path=",
+    // pimageUrl: "http://127.0.0.1:8089/V1/product/picture/show?path=",
+
+
+    upPImageUrl: "/V1/product/upload/picture",
+    bgImg: "https://www.x-cloudcard.com/V1/bg/show?path=",
+    //bgImg:"https://www.x-cloudcard.com/devapi/V1/bg/show?path=",
+
+
+
     aboutImg: "https://www.x-cloudcard.com/V1/bg/show?path=" + encodeURI("about.png"),
     GetCardQRCode: "/V1/card/cardQRCode.do",
     //产品审核图标显示
@@ -298,8 +328,8 @@ App({
     //默认头像
     morenTouxian: "https://www.x-cloudcard.com/V1/bg/show?path=" + encodeURI("shouyeguangao.png"),
     token: "",
-    cardImgLimNum: 6,
+    cardImgLimNum: 9,
     productLimNum: 6,
-    productImgLimNum: 6,
+    productImgLimNum: 9,
   }
 })

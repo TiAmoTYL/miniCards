@@ -3,7 +3,7 @@ var app = getApp()
 var that;
 Page({
   data: {
-    cardListData: [],
+    cardListData: new Array(),
     showToast: false,
     getCustomData: {
       'url': '/V1/visit/List.do',
@@ -23,22 +23,42 @@ Page({
   },
   //下拉刷新数据
   onPullDownRefresh: function() {
+    this.setData({
+      "cardListData": new Array()
+    })
     if (this.data.mood) {
+      this.setData({
+        "getMoodsList.data.page": 1
+      })
       that.getMoodsList();
       return
     }
+    this.setData({
+      "getCustomData.data.page": 1
+    })
     this.getCustomList()
   },
+
   //上拉加载分页数据
   onReachBottom: function() {
-    console.log("上拉加载分页数据")
-
+    if (this.data.mood) {
+      this.setData({
+        "getMoodsList.data.page": that.data.getMoodsList.data.page+1
+      })
+      that.getMoodsList();
+      return
+    }
+    this.setData({
+      "getCustomData.data.page": that.data.getCustomData.data.page + 1
+    })
+    this.getCustomList()
 
   },
 
   //获取访客列表数据
   getCustomList: function() {
     app.getData(that.data.getCustomData.url + "?openId=" + that.data.getCustomData.data.openId + "&page=" + that.data.getCustomData.data.page, function(res) {
+      wx.stopPullDownRefresh()
       if (res.status != 200) {
         app.showErrorMsg("查询失败，请稍后重试");
         return;
@@ -54,7 +74,7 @@ Page({
           title: '加载中',
         })
         that.setData({
-          cardListData: res.result
+          cardListData: that.data.cardListData.concat(res.result)
         })
         setTimeout(function() {
           wx.hideLoading()
@@ -66,6 +86,8 @@ Page({
   //获取人气列表数据
   getMoodsList: function() {
     app.getData(that.data.getMoodsList.url + "?cardCode=" + that.data.getMoodsList.data.code + "&page=" + that.data.getMoodsList.data.page, function(res) {
+      wx.stopPullDownRefresh()
+
       if (res.status != 200) {
         app.showErrorMsg("查询失败，请稍后重试");
         return;
@@ -81,7 +103,7 @@ Page({
           title: '加载中',
         })
         that.setData({
-          cardListData: res.result
+          cardListData: that.data.cardListData.concat(res.result)
         })
         setTimeout(function() {
           wx.hideLoading()
@@ -107,10 +129,13 @@ Page({
   },
   onShow: function() {
     // 页面显示
+    this.setData({
+      "cardListData": new Array()
+    })
     var user = wx.getStorageSync("userInfo");
     this.setData({
-      "getCustomData.data.openId": user.openId
-    })
+      "getCustomData.data.openId":user.openId
+       })
     if(this.data.mood){
       that.getMoodsList();
       return 

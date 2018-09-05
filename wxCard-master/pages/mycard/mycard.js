@@ -75,6 +75,10 @@ Page({
           }
         })
       }
+
+      this.setData({
+        toCreated: true,
+      })
     } else {
       wx.showModal({
         title: '提示',
@@ -100,15 +104,19 @@ Page({
         that.setData({
           cardListData: res.result,
         })
-        if (that.data.cardListData.length == 0 || that.data.toCreated) {
+        if (that.data.cardListData.length < 5 && that.data.toCreated) {
+          that.setData({
+            toCreated: false
+          });
           wx.navigateTo({
             url: '../createcard/createcard?id=0'
           });
-        } else if (that.data.cardListData.length >= 5 || that.data.toCreated) {
+
+
+        } else if (that.data.cardListData.length >= 5 && that.data.toCreated) {
           setTimeout(() => {
             app.showErrorMsg('最多只能创建五张名片')
           }, 0);
-       
         }
       } else {
         wx.showToast({
@@ -208,18 +216,18 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     wx.hideShareMenu();
     that = this
-    if (wx.getStorageSync('userInfo') == '') {
-      //      app.getLogiCallback("",function(){});
-    } else {
-      that.getCardData() //获取初始数据
-      // if (wx.getStorageSync("cardList") == "") {
-      //   that.getCardData() //获取初始数据
-      // } else {
-      //   that.setData({
-      //     cardListData: wx.getStorageSync("cardList"),
-      //   })
-      // }
-    }
+    // if (wx.getStorageSync('userInfo') == '') {
+    //   //      app.getLogiCallback("",function(){});
+    // } else {
+    //   that.getCardData() //获取初始数据
+    //   // if (wx.getStorageSync("cardList") == "") {
+    //   //   that.getCardData() //获取初始数据
+    //   // } else {
+    //   //   that.setData({
+    //   //     cardListData: wx.getStorageSync("cardList"),
+    //   //   })
+    //   // }
+    // }
 
 
 
@@ -229,10 +237,24 @@ Page({
   },
   onShow: function() {
     // 页面显示
+    if (wx.getStorageSync('userInfo') == '') {
+      wx.checkSession({
+        success: function() {
+          //session_key 未过期，并且在本生命周期一直有效
+          setTimeout(() => {
+            that.getCardData() 
+          }, 200);
+        },
+        fail: function() {         
+          app.getLogiCallback("", function () { that.getCardData() });
+        }
+      })
+
+    } else {
+      that.getCardData() //获取初始数据
+    }
     that = this
-    this.setData({
-      toCreated: false,
-    })
+
 
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1];

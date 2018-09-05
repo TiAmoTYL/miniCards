@@ -2,29 +2,28 @@
 <view class="card-about">
   <view class="head">
     <image src="{{aboutImg}}" class="logo"></image>
-    <view class="title" style="font-weight:600;">无招名片，重新定义营销方式</view>
+    <view class="title FW600" >无招名片，重新定义营销方式</view>
     <view class="subtitle">V1.1.0</view>
   </view>
   <view class="content" wx:if="{{about}}">
-    <text decode="{{true}}" style='font-size:14rpx;'>
-&ensp;&ensp;&ensp;&ensp;<text style="font-weight:600;">无招名片</text>是您的商务名片管家，人脉拓展和管理专家，商务人士必备！
+    <text decode="{{true}}" style='font-size:14px;'>&ensp;&ensp;&ensp;&ensp;<text  class='FW800'>无招名片</text>是您的商务名片管家，人脉拓展和管理专家，商务人士必备！
     </text>
-    <text decode="{{true}}" style='font-size:14rpx;'>
-<text style="font-weight:600;">AI名片识别:</text> 
-    纸质名片简单一拍，即可快捷保存至手机！
-    <text style="font-weight:600;">名片标签化管理:</text> 
-    名片贴标签，分组管理，查找管理更轻松！
-    <text style="font-weight:600;">产品智能推广:</text>
-     发布产品，一键分享好友或群，智能跟踪！
-    <text style="font-weight:600;">访客AI雷达:</text>
-     全面把握访客浏览状态，营销成功率更高！
+    <text decode="{{true}}" style='font-size:14px;'>
+    <text class='FW800'>AI名片识别:</text> 
+    &ensp;&ensp;&ensp;&ensp;纸质名片简单一拍，即可快捷保存至手机！
+    <text class='FW800'>名片标签化管理:</text> 
+    &ensp;&ensp;&ensp;&ensp;名片贴标签，分组管理，查找管理更轻松！
+    <text class='FW800'>产品智能推广:</text>
+    &ensp;&ensp;&ensp;&ensp;发布产品，一键分享好友或群，智能跟踪！
+    <text class='FW800'>访客AI雷达:</text>
+    &ensp;&ensp;&ensp;&ensp;全面把握访客浏览状态，营销成功率更高！
     </text>
   </view>
   <view class="content" wx:else>
-    <text decode="{{true}}" style='font-size:18rpx;'>
+    <text decode="{{true}}" style='font-size:18px;'>
 &ensp;&ensp;&ensp;&ensp;感谢您使用无招名片，请您把您的问题与意见发送到以下邮箱，我们将尽快回复您！
     </text>
-    <text decode="{{true}}" style='font-size:20rpx;'>
+    <text decode="{{true}}" style='font-size:20px;' catchlongpress='copyText' >
 &ensp;&ensp;&ensp;&ensp;183257877@qq.com
     </text>
   </view>

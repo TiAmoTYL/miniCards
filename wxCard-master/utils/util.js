@@ -38,8 +38,55 @@ function imgObToListWithIndex(n, path) {
   }
   return list;
 }
+function imgObToListDeleteCover(n, path) {
+  var list = new Array();
+  if (Array.isArray(n)) {
+    for (var i = 0; i < n.length; i++) {
+      if (n[i].isCover == 'N' || n[i].isCover == null){
+        list.push(path + encodeURI(n[i].path + n[i].name));
+      }
+      
+    }
+  }
+  return list;
+}
+function imgObToListWithIndexDeleteCover(n, path) {
+  var list = new Array();
+  
+  if (Array.isArray(n)) {
+    for (var i = 0; i < n.length; i++) {
+      if (n[i].isCover == 'N' || n[i].isCover==null) {
+        let checkIcon='';
+        switch (n[i].pass){
+          case '0':{
+            checkIcon ='/images/0a_WPass.png';
+            break;
+          }
+          case '1': {
+            checkIcon = '/images/0a_Pass.png';
+            break;
+          }
+          case '2': {
+            checkIcon = '/images/0a_NPass.png';
+            break;
+          }
+
+        }
+      var obj = {
+        src: path + encodeURI(n[i].path + n[i].name),
+        index: i,
+        checkIcon: checkIcon
+      }
+      list.push(obj);
+      }
+    }
+  }
+  return list;
+}
 module.exports = {
   imgObToList: imgObToList,
   imgObToListWithIndex: imgObToListWithIndex,
+  imgObToListDeleteCover:imgObToListDeleteCover,
+  imgObToListWithIndexDeleteCover: imgObToListWithIndexDeleteCover,
   formatTime: formatTime
 }

@@ -4,7 +4,7 @@
 <view class="bg-gray3" >
   <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="card-form">
-      <view class="card-formitem"  style='margin-top:0rpx;'>
+      <view class="card-formitem"  style='margin-top:0px;'>
         <view class="card-user">
           <view class="sign">
             <image src="{{filters.touxiandizhi(cardData.data.avatarUrl)}}" bindtap="portraitClick"></image>
@@ -13,7 +13,7 @@
             <input placeholder="姓名" class="card-input" placeholder-class="gray3" maxlength="6" name="name" value="{{cardData.data.name}}" bindinput="cardDataName" />
             <input placeholder="手机号码" class="card-input" placeholder-class="gray3" maxlength="14" type="number" name="phone" value="{{cardData.data.phone}}" bindinput="cardDataMobile" />
           </view>
-           <view class="sign gray3 scan-created-card" style='margin-right:0rpx;'  catchtap='scanCard'>
+           <view class="sign gray3 scan-created-card" style='margin-right:0px;'  catchtap='scanCard'>
            <view class='iconfont  icon-saomiao' style='font-size:200%;color:#4E5C7D;'></view>
            <text style='font-size:80%;color:#4E5C7D;'>扫描名片</text>
             <text style='font-size:80%;color:#4E5C7D;'>智能录入</text>
@@ -23,10 +23,10 @@
       <view class="card-formitem">公司名称:
         <input placeholder="公司名称" class="card-input" placeholder-class="gray3" maxlength="20" name="company" value="{{cardData.data.company}}" bindinput="cardDataCompany" />
         职务名称:
-        <input placeholder="职务名称" class="card-input" placeholder-class="gray3" maxlength="20" name="position" value="{{cardData.data.position}}" bindinput="cardDataPosition" />
+        <input placeholder="职务名称(最多七个字)" class="card-input" placeholder-class="gray3" maxlength="7" name="position" value="{{cardData.data.position}}" bindinput="cardDataPosition" />
         主营业务:
         <input placeholder="主营业务" class="card-input" placeholder-class="gray3" maxlength="35" name="mainBusiness" value="{{cardData.data.mainBusiness}}" bindinput="cardDataMainBusiness" />
-        行业:<input placeholder="行业" class="card-input" placeholder-class="gray3" maxlength="20" name="vocation" value="{{cardData.data.vocation}}" bindinput="cardDataVocation" />
+        行业:<input placeholder="行业(最多五个字)" class="card-input" placeholder-class="gray3" maxlength="5" name="vocation" value="{{cardData.data.vocation}}" bindinput="cardDataVocation" />
  </view>
  <view class="card-formitem">
         邮箱:<input placeholder="邮箱" class="card-input " placeholder-class="gray3" maxlength="100" name="email" value="{{cardData.data.email}}" bindinput="cardDataEmail" />
@@ -36,7 +36,7 @@
       </view>
       <view class="card-formitem">
         <view class="section">
-          公司简介:<textarea bindblur="cardDataCompanyProfile" placeholder-class="gray3" maxlength="200" name="companyProfile" value="{{cardData.data.companyProfile}}" auto-height placeholder="公司简介" style="min-height:30rpx;padding-top:10rpx;" />
+          公司简介:<textarea bindblur="cardDataCompanyProfile" placeholder-class="gray3" maxlength="200" name="companyProfile" value="{{cardData.data.companyProfile}}" auto-height placeholder="公司简介" style="min-height:30px;padding-top:10px;" />
         </view>
       </view>
       <view class="card-formitem">

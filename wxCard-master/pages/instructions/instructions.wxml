@@ -1,0 +1,97 @@
+<!--pages/setting/setting.wxml-->
+<view class="main" >
+ <view style='display:flex;justify-content:center;font-size:80rpx;'>
+    <text>目录</text>
+  </view>
+  <view class='inter-line  title-hyperlink' catchtap='inst1' ><text>1、名片基本功能介绍</text>
+    <i class="iconfont {{showInst1?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst1}}">
+    <view class="card-attritem" style="padding:{{inst1Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst1Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+  <view class='inter-line  title-hyperlink' catchtap='inst2' ><text>2、如何创建名片</text>
+    <i class="iconfont {{showInst2?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst2}}">
+    <view class="card-attritem" style="padding:{{inst2Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst2Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+   <view class='inter-line  title-hyperlink' catchtap='inst3' ><text>3、如何扫描保存纸质名片</text>
+    <i class="iconfont {{showInst3?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst3}}">
+    <view class="card-attritem" style="padding:{{inst3Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst3Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+   <view class='inter-line  title-hyperlink' catchtap='inst4' ><text>4、如何保存名片到手机通讯录</text>
+    <i class="iconfont {{showInst4?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst4}}">
+    <view class="card-attritem" style="padding:{{inst4Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst4Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+   <view class='inter-line  title-hyperlink' catchtap='inst5' ><text>5、如何给名片贴标签进行管理</text>
+    <i class="iconfont {{showInst5?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst5}}">
+    <view class="card-attritem" style="padding:{{inst5Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst5Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+
+   <view class='inter-line  title-hyperlink' catchtap='inst6' ><text>6、如何发布产品</text>
+    <i class="iconfont {{showInst6?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst6}}">
+    <view class="card-attritem" style="padding:{{inst6Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst6Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+ <view class='inter-line  title-hyperlink' catchtap='inst7' ><text>7、如何利用无招名片进行产品推广</text>
+    <i class="iconfont {{showInst7?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst7}}">
+    <view class="card-attritem" style="padding:{{inst7Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst7Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+   <view class='inter-line  title-hyperlink' catchtap='inst8' ><text>8、如何使用名片码</text>
+    <i class="iconfont {{showInst8?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst8}}">
+    <view class="card-attritem" style="padding:{{inst8Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst8Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+   <view class='inter-line  title-hyperlink' catchtap='inst9' ><text>9、如果利用访客轨迹进行分析</text>
+    <i class="iconfont {{showInst9?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst9}}">
+    <view class="card-attritem" style="padding:{{inst9Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst9Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+  <view class='inter-line  title-hyperlink' catchtap='inst10' ><text>10、安卓用户快速启动无招名片</text>
+    <i class="iconfont {{showInst10?'icon-shangla':''}} "></i>
+  </view>
+  <view class="card-attr" wx:if="{{showInst10}}">
+    <view class="card-attritem" style="padding:{{inst10Images.length>0?'0px':'30rpx'}};">
+      <image wx:for="{{inst10Images}}" wx:key="{{item}}"   catchtap='preImg'  wx:for-index="index" wx:for-item="item" src=" {{item}}" bindtap="previewImage" data-path='{{item}}' style='width:100%;' mode="widthFix" />
+    </view>
+  </view>
+
+  
+</view>

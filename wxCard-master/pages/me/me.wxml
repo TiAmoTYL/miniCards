@@ -16,8 +16,8 @@
           </view>
           <view>
            
-             <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='font-size:15rpx;line-height:30rpx;' wx:if="{{userinfo.wxPhone !=''}}" > 刷新号码</button>
-            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='font-size:15rpx;line-height:30rpx;' wx:else> 验证号码</button> -->
+             <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='font-size:15px;line-height:30px;' wx:if="{{userinfo.wxPhone !=''}}" > 刷新号码</button>
+            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='font-size:15px;line-height:30px;' wx:else> 验证号码</button> -->
         <!-- < url="../phoneverify/phoneverify" class="btn-verify" wx:else>验证</> -->
         <!-- </view> -->
         <!-- </view> -->
@@ -36,13 +36,13 @@
   <view class="item-group" style='background:#fff;margin-top:24rpx;'>
     <view class='myCardOpera'>
       <button lang="zh_CN" catchtap="toTrack">
-        <text class='   iconfont icon-guanli ' style='color:#F88D36;padding-right:10rpx;font-size:23rpx;'></text>
+        <text class='   iconfont icon-guanli ' style='color:#F88D36;padding-right:10px;font-size:23px;'></text>
         <text class='black'>产品追踪</text>
 
       </button>
       <view class='cut-off gray3 '></view>
       <button catchtap='toVisitor'>
-        <text class='   iconfont icon-leida ' style='color:#477DB2;padding-right:10rpx;font-size:23rpx;'></text>
+        <text class='   iconfont icon-leida ' style='color:#477DB2;padding-right:10px;font-size:23px;'></text>
         <text class=' black'>AI访客</text>
       </button>
     </view>
@@ -69,7 +69,7 @@
     </view>
   </view>-->
   <view class="item-group" style='margin-top:24rpx;'>
-    <navigator class="item " url="../setting/setting" style='height:40rpx;vertical-align:middle;line-height:45rpx;'>
+    <navigator class="item " url="../setting/setting" style='height:40px;vertical-align:middle;line-height:45px;'>
       <view style='width:100%;'>
         <text class="iconfont icon-shezhi"></text>
         <text>系统设置</text>
@@ -78,7 +78,7 @@
     </navigator>
   </view>
   <view class="item-group">
-    <navigator class="item" url="../about/about?type=0" style='height:45rpx;vertical-align:middle;line-height:45rpx;'>
+    <navigator class="item" url="../about/about?type=0" style='height:45px;vertical-align:middle;line-height:45px;'>
       <view style='width:100%;'>
         <text class="iconfont icon-guanyu"></text>
         <text>关于我们</text>
@@ -87,10 +87,20 @@
     </navigator>
   </view>
     <view class="item-group">
-    <navigator class="item" url="../about/about?type=1" style='height:45rpx;vertical-align:middle;line-height:45rpx;'>
+    <navigator class="item" url="../about/about?type=1" style='height:45px;vertical-align:middle;line-height:45px;'>
       <view style='width:100%;'>
         <text class="iconfont icon-guanyu"></text>
         <text>联系我们</text>
+      </view>
+      <text class="iconfont icon-iconfontzhizuobiaozhun19  "></text>
+    </navigator>
+  </view>
+
+   <view class="item-group" style='margin-top:24rpx;'>
+    <navigator class="item " url="../instructions/instructions" style='height:40px;vertical-align:middle;line-height:45px;'>
+      <view style='width:100%;'>
+        <text class="iconfont icon-shezhi"></text>
+        <text>操作指南</text>
       </view>
       <text class="iconfont icon-iconfontzhizuobiaozhun19  "></text>
     </navigator>

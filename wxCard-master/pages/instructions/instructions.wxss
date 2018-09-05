@@ -1,0 +1,27 @@
+/* pages/setting/setting.wxss */
+@import "../template/template.wxss";
+@import "../createcard/createcard.wxss";
+@import "../../app.wxss";
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+.inter-line {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+  margin-top: 40rpx;
+  font-weight: bold;
+  margin-left:2%;
+
+}
+.inter-line i {
+  position: absolute;
+  left: 90%;
+}
+
+.title-hyperlink{
+text-decoration-line: underline; 
+text-decoration: underline;
+}
+

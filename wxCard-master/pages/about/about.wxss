@@ -30,3 +30,9 @@ height:100%;
 .card-about .content{
     line-height: 50rpx;
 }
+.FW800{
+  font-weight:800;
+}
+.FW600{
+  font-weight:600;
+}

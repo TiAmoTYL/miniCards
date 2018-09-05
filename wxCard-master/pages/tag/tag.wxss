@@ -25,16 +25,16 @@ border-radius:0%
   height: 70%;
   width:100%;
   margin: 2%;
-  border: 1rpx solid #bdbdbd;
+  border: 1px solid #bdbdbd;
 }
 
 .tag-button {
-  border-radius: 0rpx;
+  border-radius: 0px;
   height: 75%;
   width:40%;
 
   margin: 2%;
-  border: 1rpx solid #39BF9E;
+  border: 1px solid #39BF9E;
   padding-left: 4%;
   padding-right: 4%;
   justify-content: center;
@@ -50,10 +50,10 @@ border-radius:0%
 }
 
 .impress_label {
-  border: 1rpx solid #39bf9e;
-  border-radius: 20rpx;
+  border: 1px solid #39bf9e;
+  border-radius: 20px;
   text-align: center;
-  padding: 5rpx;
+  padding: 5px;
   margin: 2%;
   color: #39bf9e;
 }

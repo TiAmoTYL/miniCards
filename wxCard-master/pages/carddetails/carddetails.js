@@ -68,10 +68,32 @@ Page({
 
 
   },
+  //打开地图定位位置
+  openAaddress:function(e){
+    if (e.currentTarget.dataset.add != undefined && e.currentTarget.dataset.add!=''){
+      var i = e.currentTarget.dataset.add.split(',');
+      wx.openLocation({
+        latitude: parseFloat(i[0]),
+        longitude: parseFloat(i[1]),
+        scale: 28
+      })
+    }
+   
+  },
+  //复制到剪贴板
+  copyText:function(e){
+    app.setCBData(e.currentTarget.dataset.text);
+  },
   //获取用户信息
   getWxUserInfo: function(res) {
     var that = this;
     if (res.detail.errMsg == "getUserInfo:ok") {
+      if (wx.getStorageSync("userInfo").openId!=''){
+        wx.navigateTo({
+          url: '../productList/productList?code=' + that.data.cardDetailsData.code + "&isshare=" + that.data.isshare + "&type=2",
+        })
+        return;
+      }
       app.getWxUserInfo(res, function(data) {
         if (data == 'success') {
           that.setData({
